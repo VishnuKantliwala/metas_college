@@ -1,0 +1,35 @@
+﻿.mnu{background:#424952 none repeat scroll 0 0;border-radius:5px;box-shadow:0 0 0 3px rgba(255, 255, 255, 0.1) inset;color:#fff;display:block;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;font-weight:700;margin-bottom:10px;padding:15px;transition:background 0.5s ease 0s;}
+a{cursor:pointer;}
+.table tr > td > a:hover{color:#ED47A0;text-decoration:underline;}
+.table tr > th{text-align:center;color:#463A87;}
+.brdhighlit{border:2px solid;border-radius:10px;padding-left:10px;}
+.txtPurple{color:#463A87;}
+.txtPink{color:#F12687;}
+.txtlightPink{color:#FC85BC;}
+i1{color:#fff;float:right;margin:-10px 0 0;}
+.border5px{border:5px solid;padding:5px;}
+.aside ul > li{padding-left:10px;border-radius:6px;background-color:rgb(51, 51, 51);margin:2px;}
+.aside ul > li > a{color:#fff;}
+.aside ul > li > h6 > a{color:#fff;}
+.aside ul > li > ul > li{padding-left:10px;border-radius:6px;background-color:#666;margin:2px;}
+.aside ul > li > i{padding-right:10px;padding-top:5px;color:#fff;}
+.hed{background:#f585bf none repeat scroll 0 0;border-radius:6px;color:#fff;font-weight:bold;padding:8px;}
+.admin ul > li{padding-left:10px;border-radius:6px;background-color:#EF702B;margin:2px;}
+.admin ul > li > h6 > a{color:#fff;}
+.icon-bar{max-width:175px;text-align:left;background-color:#fff;position:absolute;z-index:10;border-radius:5px;position:fixed;}
+.icon-bar a{padding:5px;display:block;transition:all 0.3s ease;color:deeppink;font-size:20px;}
+#ticker_container{font-family:Arial, "Helvetica Neue", Helvetica, sans-serif;background:#FFF;color:#000;opacity:0.9;padding:8px;border:1px solid #343434;-webkit-border-radius:7px;-moz-border-radius:7px;border-radius:7px;overflow:auto;font-weight:bold;}
+.institute p{line-height:1.2;}
+.institute img{height:55px;}
+.icon-bar{max-width:200px;text-align:center;background-color:rgba(255,255,255,0.7);position:absolute;z-index:10;border-radius:5px;position:fixed;}
+.icon-bar a{padding:5px;display:block;transition:all 0.3s ease;color:#192398;text-align:center;font-size:20px;}
+
+
+.feature-icon-box{border:1px solid #DFDFDF;}
+.feature-icon-box .feature-icon{border:4px solid #f1f1f1;padding:10px 15px;position:absolute;top:-30px;}
+
+
+@media only screen and (max-width:479px){.xxs-text-center{text-align:center;}
+.xxs-height-auto{min-height:auto !important;}
+#ticker_container{min-height:100px;}
+}
