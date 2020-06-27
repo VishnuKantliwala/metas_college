@@ -202,12 +202,13 @@
                             <li>
                                 <a href="serviceCatView.php">
                                     <i class="mdi mdi-view-dashboard"></i>
-                                    <span> Team </span>
+                                    <span> Team / Students </span>
                                     <span class="menu-arrow"></span>
                                 </a>
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="teamCatView.php"> Category </a></li>
                                     <li><a href="teamView.php"> Team </a></li>
+                                    <li><a href="studentView.php"> Students </a></li>
                                 </ul>
                             </li>
 

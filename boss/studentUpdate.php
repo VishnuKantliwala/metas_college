@@ -17,23 +17,23 @@ $cn->connectdb();
 
 $pageID= 'page29';
 
-$team_id=$_GET['team_id'];
+$student_id=$_GET['student_id'];
 
   
 if(isset($_POST['updateSlider']))
 {
 		
-    $team_title = $_POST['team_title'];
-    $team_email=mysqli_escape_string($cn->getConnection(),$_POST['team_email']);
-    $team_degree=$_POST['team_degree'];
-    $team_position=$_POST['team_position'];
+    $student_title = $_POST['student_title'];
+    $student_email=mysqli_escape_string($cn->getConnection(),$_POST['student_email']);
+    $student_degree=$_POST['student_degree'];
+    $student_position=$_POST['student_position'];
     $description = $_POST['description'];
-    $team_qualification = $_POST['team_qualification'];
-    $team_articles = $_POST['team_articles'];
-    $team_presentations = $_POST['team_presentations'];
-    $team_invites = $_POST['team_invites'];
-    $team_thesis = $_POST['team_thesis'];
-    $team_workshops = $_POST['team_workshops'];
+    $student_qualification = $_POST['student_qualification'];
+    $student_articles = $_POST['student_articles'];
+    $student_presentations = $_POST['student_presentations'];
+    $student_invites = $_POST['student_invites'];
+    $student_thesis = $_POST['student_thesis'];
+    $student_workshops = $_POST['student_workshops'];
     $meta_tag_title=$_POST['meta_tag_title'];
     $meta_tag_description=$_POST['meta_tag_description'];
     $meta_tag_keywords=$_POST['meta_tag_keywords'];	
@@ -57,33 +57,33 @@ if(isset($_POST['updateSlider']))
     }
     else
     {
-        @unlink("../team/big_img/". $frontimg2);
-        @unlink("../team/". $frontimg2);
-        $sliderImage = createImage('image_name',"../team/");
+        @unlink("../student/big_img/". $frontimg2);
+        @unlink("../student/". $frontimg2);
+        $sliderImage = createImage('image_name',"../student/");
         
         $sqlFile = ", `image_name` = '".$sliderImage."'";
     }
                 
-    $con->insertdb("UPDATE `tbl_team` SET `team_title` = '".$team_title."', `description` = '".$description."'  ".$sqlFile.", meta_tag_title='".$meta_tag_title."',meta_tag_description='".$meta_tag_description."',meta_tag_keywords='".$meta_tag_keywords."',slug='".$slug."',cat_id='".$catID."', `team_email` = '".$team_email."', `team_degree` = '".$team_degree."', `team_position` = '".$team_position."', `team_qualification` = '".$team_qualification."', `team_articles` = '".$team_articles."', `team_presentations` = '".$team_presentations."', `team_invites` = '".$team_invites."', `team_email` = '".$team_email."', `team_thesis` = '".$team_thesis."', `team_workshops` = '".$team_workshops."' WHERE `tbl_team`.`team_id` = '".$team_id."'");
+    $con->insertdb("UPDATE `tbl_student` SET `student_title` = '".$student_title."', `description` = '".$description."'  ".$sqlFile.", meta_tag_title='".$meta_tag_title."',meta_tag_description='".$meta_tag_description."',meta_tag_keywords='".$meta_tag_keywords."',slug='".$slug."',cat_id='".$catID."', `student_email` = '".$student_email."', `student_degree` = '".$student_degree."', `student_position` = '".$student_position."', `student_qualification` = '".$student_qualification."', `student_articles` = '".$student_articles."', `student_presentations` = '".$student_presentations."', `student_invites` = '".$student_invites."', `student_email` = '".$student_email."', `student_thesis` = '".$student_thesis."', `student_workshops` = '".$student_workshops."' WHERE `tbl_student`.`student_id` = '".$student_id."'");
 
 	
-	header("location: teamView.php?page=$page");
+	header("location: studentView.php?page=$page");
 }
 
 if(isset($_GET["Image"]))
 	{
 	//print_r($_GET);die;
 	$page=$_GET['page'];
-	$team_id= $_GET['team_id'];
-	$records=$con->selectdb("SELECT * FROM tbl_team where team_id=".$team_id."");
+	$student_id= $_GET['student_id'];
+	$records=$con->selectdb("SELECT * FROM tbl_student where student_id=".$student_id."");
 	while($row=mysqli_fetch_row($records))
 	{
-	  unlink('../team/'.$row[1]);
-	  unlink('../team/big_img/'.$row[1]);
+	  unlink('../student/'.$row[1]);
+	  unlink('../student/big_img/'.$row[1]);
 
 	}
-	$con->selectdb("update tbl_team set image_name='' where team_id = '".$team_id."'");
-	header("location: teamUpdate.php?team_id=".$team_id."&page=".$page);
+	$con->selectdb("update tbl_student set image_name='' where student_id = '".$student_id."'");
+	header("location: studentUpdate.php?student_id=".$student_id."&page=".$page);
 
 
 }	
@@ -102,7 +102,7 @@ else{
 
 
 // reterive selected value
-$sqlC=$con->selectdb("SELECT cat_id FROM tbl_team where team_id=".$team_id."");
+$sqlC=$con->selectdb("SELECT cat_id FROM tbl_student where student_id=".$student_id."");
 while($rowC=mysqli_fetch_assoc($sqlC))
 {
     $arraycat_id= explode(",",$rowC['cat_id']);
@@ -242,7 +242,7 @@ function generate_menu($parent)
                 </li>
 
                 <li>
-                    <h4 class="page-title-main">Team</h4>
+                    <h4 class="page-title-main">Student</h4>
                 </li>
 
             </ul>
@@ -266,13 +266,13 @@ function generate_menu($parent)
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
-                                <h4 class="mt-0 mb-2 header-title">Team Form</h4>
+                                <h4 class="mt-0 mb-2 header-title">Student Form</h4>
                                 <form class="form-horizontal" method="post" action="#" id="myform" name="myform"
                                     enctype="multipart/form-data">
                                     <input type="hidden" name="page" id="page" value="<? echo $_GET['page'];?>">
 
                                     <?php
-										$records=$con->selectdb("SELECT * FROM tbl_team where team_id=".$team_id."");
+										$records=$con->selectdb("SELECT * FROM tbl_student where student_id=".$student_id."");
 										while($row=mysqli_fetch_assoc($records))
 										{
 										?>
@@ -305,29 +305,29 @@ function generate_menu($parent)
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="team_title" name="team_title"
-                                                placeholder="Name" required value="<? echo $row['team_title']; ?>">
+                                            <input type="text" class="form-control" id="student_title" name="student_title"
+                                                placeholder="Name" required value="<? echo $row['student_title']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Degree</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="team_degree" name="team_degree"
-                                                placeholder="Degree" required value="<? echo $row['team_degree']; ?>">
+                                            <input type="text" class="form-control" id="student_degree" name="student_degree"
+                                                placeholder="Degree" required value="<? echo $row['student_degree']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Position</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="team_position" name="team_position"
-                                                placeholder="Position" required value="<? echo $row['team_position']; ?>">
+                                            <input type="text" class="form-control" id="student_position" name="student_position"
+                                                placeholder="Position" required value="<? echo $row['student_position']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-12">
-                                            <input type="email" class="form-control" id="team_email" name="team_email"
-                                                placeholder="Email" required value="<? echo $row['team_email']; ?>">
+                                            <input type="email" class="form-control" id="student_email" name="student_email"
+                                                placeholder="Email" required value="<? echo $row['student_email']; ?>">
                                         </div>
                                     </div>
 
@@ -345,8 +345,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3"
                                                 class="col-sm-12 control-label">Qualification</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_qualification"
-                                                    name="team_qualification" placeholder="Qualification"><? echo $row['team_qualification']; ?></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_qualification"
+                                                    name="student_qualification" placeholder="Qualification"><? echo $row['student_qualification']; ?></textarea>
                                             </div>
                                         </div>
 
@@ -354,8 +354,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">Articles in
                                                 journals</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_articles"
-                                                    name="team_articles" placeholder="Articles in journals"><? echo $row['team_articles']; ?></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_articles"
+                                                    name="student_articles" placeholder="Articles in journals"><? echo $row['student_articles']; ?></textarea>
                                             </div>
                                         </div>
 
@@ -366,9 +366,9 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">Paper
                                                 Presentation</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_presentations"
-                                                    name="team_presentations"
-                                                    placeholder="Paper Presentation"><? echo $row['team_presentations']; ?></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_presentations"
+                                                    name="student_presentations"
+                                                    placeholder="Paper Presentation"><? echo $row['student_presentations']; ?></textarea>
                                             </div>
                                         </div>
 
@@ -376,8 +376,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">Invited
                                                 Talks</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_invites"
-                                                    name="team_invites" placeholder="Invited Talks"><? echo $row['team_invites']; ?></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_invites"
+                                                    name="student_invites" placeholder="Invited Talks"><? echo $row['student_invites']; ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -386,8 +386,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">MPhil / PhD
                                                 thesis</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_thesis" name="team_thesis"
-                                                    placeholder="MPhil / PhD thesis"><? echo $row['team_thesis']; ?></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_thesis" name="student_thesis"
+                                                    placeholder="MPhil / PhD thesis"><? echo $row['student_thesis']; ?></textarea>
                                             </div>
                                         </div>
 
@@ -395,9 +395,9 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">Workshop/ FDP/ Training
                                                 programme attendeds</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_workshops"
-                                                    name="team_workshops"
-                                                    placeholder="Workshop/ FDP/ Training programme attendeds"><? echo $row['team_workshops']; ?></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_workshops"
+                                                    name="student_workshops"
+                                                    placeholder="Workshop/ FDP/ Training programme attendeds"><? echo $row['student_workshops']; ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -407,11 +407,11 @@ function generate_menu($parent)
                                         <div class="col-sm-4">
                                             <input type="file" id="image_name" name="image_name" class="dropify"
                                                 data-default-file="<?if($row['image_name']!=''){echo "
-                                                ../team/".$row['image_name'];}?>"/>
+                                                ../student/".$row['image_name'];}?>"/>
 
                                             <? if($row['image_name']!=''){?>
                                             <a class="btn btn-lighten-danger"
-                                                href="teamUpdate.php?team_id=<?php echo $row['team_id']; ?>&Image=Del"
+                                                href="studentUpdate.php?student_id=<?php echo $row['student_id']; ?>&Image=Del"
                                                 onClick="return confirm('Are you sure want to delete?');">Delete</a>
                                             <? } ?>
                                             <input type="hidden" id="frontimg2" name="frontimg2"
@@ -457,7 +457,7 @@ function generate_menu($parent)
                                                 class="btn btn-success">Update</button>
                                             <button type="submit" name="myButton" id="myButton"
                                                 class="btn btn-lighten-danger"
-                                                onClick="window.location.href='teamView.php'; return false;">Cancel</button>
+                                                onClick="window.location.href='studentView.php'; return false;">Cancel</button>
                                         </div>
                                     </div>
 

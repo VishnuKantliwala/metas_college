@@ -20,25 +20,25 @@ $error = '';
 if(isset($_POST['addSlider']))
 {	    
 //print_r($_POST);die;
-    $team_title=$_POST['team_title'];
-    $team_degree=$_POST['team_degree'];
-    $team_position=$_POST['team_position'];
+    $student_title=$_POST['student_title'];
+    $student_degree=$_POST['student_degree'];
+    $student_position=$_POST['student_position'];
 
-    $team_email=mysqli_escape_string($cn->getConnection(),$_POST['team_email']);
-    if(!filter_var($team_email, FILTER_VALIDATE_EMAIL))
+    $student_email=mysqli_escape_string($cn->getConnection(),$_POST['student_email']);
+    if(!filter_var($student_email, FILTER_VALIDATE_EMAIL))
     {
         $error = 'Invalid Email ID';
     }
     else
     {
-        $Image = createImage('image_name',"../team/");
+        $Image = createImage('image_name',"../student/");
         $description = $_POST['description'];
-        $team_qualification = $_POST['team_qualification'];
-        $team_articles = $_POST['team_articles'];
-        $team_presentations = $_POST['team_presentations'];
-        $team_invites = $_POST['team_invites'];
-        $team_thesis = $_POST['team_thesis'];
-        $team_workshops = $_POST['team_workshops'];
+        $student_qualification = $_POST['student_qualification'];
+        $student_articles = $_POST['student_articles'];
+        $student_presentations = $_POST['student_presentations'];
+        $student_invites = $_POST['student_invites'];
+        $student_thesis = $_POST['student_thesis'];
+        $student_workshops = $_POST['student_workshops'];
         
         $slug = $_POST['slug'];
         $meta_tag_title=$_POST['meta_tag_title'];
@@ -55,9 +55,9 @@ if(isset($_POST['addSlider']))
         
 
                         
-        $con->insertdb("INSERT INTO `tbl_team` (`team_title`, `description`,  `image_name`,`meta_tag_title`, `meta_tag_description`, `meta_tag_keywords`, `slug`, `cat_id`,  `team_degree`, `team_position`, `team_email`, `team_qualification`, `team_articles`, `team_presentations`, `team_invites`, `team_thesis`, `team_workshops`) VALUES ('".$team_title."', '".$description."', '".$Image."', '".$meta_tag_title."', '".$meta_tag_description."', '".$meta_tag_keywords."', '".$slug."', '".$catID."', '".$team_degree."', '".$team_position."', '".$team_email."', '".$team_qualification."', '".$team_articles."', '".$team_presentations."', '".$team_invites."', '".$team_thesis."', '".$team_workshops."');");		
+        $con->insertdb("INSERT INTO `tbl_student` (`student_title`, `description`,  `image_name`,`meta_tag_title`, `meta_tag_description`, `meta_tag_keywords`, `slug`, `cat_id`,  `student_degree`, `student_position`, `student_email`, `student_qualification`, `student_articles`, `student_presentations`, `student_invites`, `student_thesis`, `student_workshops`) VALUES ('".$student_title."', '".$description."', '".$Image."', '".$meta_tag_title."', '".$meta_tag_description."', '".$meta_tag_keywords."', '".$slug."', '".$catID."', '".$student_degree."', '".$student_position."', '".$student_email."', '".$student_qualification."', '".$student_articles."', '".$student_presentations."', '".$student_invites."', '".$student_thesis."', '".$student_workshops."');");		
                 
-        header("location:teamView.php");
+        header("location:studentView.php");
 
     }
 }
@@ -194,7 +194,7 @@ function generate_menu($parent)
                 </li>
 
                 <li>
-                    <h4 class="page-title-main">Team</h4>
+                    <h4 class="page-title-main">Student</h4>
                 </li>
 
             </ul>
@@ -218,7 +218,7 @@ function generate_menu($parent)
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
-                                <h4 class="mt-0 mb-2 header-title">Team Form</h4>
+                                <h4 class="mt-0 mb-2 header-title">Student Form</h4>
                                 <form class="form-horizontal" method="post" action="#" id="myform" name="myform"
                                     enctype="multipart/form-data">
                                     <div class="form-group">
@@ -256,28 +256,28 @@ function generate_menu($parent)
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="team_title" name="team_title"
+                                            <input type="text" class="form-control" id="student_title" name="student_title"
                                                 placeholder="Name" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Degree</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="team_degree" name="team_degree"
+                                            <input type="text" class="form-control" id="student_degree" name="student_degree"
                                                 placeholder="Degree" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Position</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="team_position" name="team_position"
+                                            <input type="text" class="form-control" id="student_position" name="student_position"
                                                 placeholder="Position" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
                                         <div class="col-sm-12">
-                                            <input type="email" class="form-control" id="team_email" name="team_email"
+                                            <input type="email" class="form-control" id="student_email" name="student_email"
                                                 placeholder="Email" required>
                                         </div>
                                     </div>
@@ -295,8 +295,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3"
                                                 class="col-sm-12 control-label">Qualification</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_qualification"
-                                                    name="team_qualification" placeholder="Qualification"></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_qualification"
+                                                    name="student_qualification" placeholder="Qualification"></textarea>
                                             </div>
                                         </div>
 
@@ -304,8 +304,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">Articles in
                                                 journals</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_articles"
-                                                    name="team_articles" placeholder="Articles in journals"></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_articles"
+                                                    name="student_articles" placeholder="Articles in journals"></textarea>
                                             </div>
                                         </div>
 
@@ -316,8 +316,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">Paper
                                                 Presentation</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_presentations"
-                                                    name="team_presentations"
+                                                <textarea type="text" class="ckeditor" id="student_presentations"
+                                                    name="student_presentations"
                                                     placeholder="Paper Presentation"></textarea>
                                             </div>
                                         </div>
@@ -326,8 +326,8 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">Invited
                                                 Talks</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_invites"
-                                                    name="team_invites" placeholder="Invited Talks"></textarea>
+                                                <textarea type="text" class="ckeditor" id="student_invites"
+                                                    name="student_invites" placeholder="Invited Talks"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -336,7 +336,7 @@ function generate_menu($parent)
                                         <label for="inputEmail3" class="col-sm-12 control-label">MPhil / PhD
                                             thesis</label>
                                         <div class="col-sm-12">
-                                            <textarea type="text" class="ckeditor" id="team_thesis" name="team_thesis"
+                                            <textarea type="text" class="ckeditor" id="student_thesis" name="student_thesis"
                                                 placeholder="MPhil / PhD thesis"></textarea>
                                         </div>
                                     </div>
@@ -345,8 +345,8 @@ function generate_menu($parent)
                                         <label for="inputEmail3" class="col-sm-12 control-label">Workshop/ FDP/ Training
                                             programme attendeds</label>
                                         <div class="col-sm-12">
-                                            <textarea type="text" class="ckeditor" id="team_workshops"
-                                                name="team_workshops"
+                                            <textarea type="text" class="ckeditor" id="student_workshops"
+                                                name="student_workshops"
                                                 placeholder="Workshop/ FDP/ Training programme attendeds"></textarea>
                                         </div>
                                     </div>
@@ -394,7 +394,7 @@ function generate_menu($parent)
                                                 class="btn btn-success">Add</button>
                                             <button type="submit" name="myButton" id="myButton"
                                                 class="btn btn-lighten-danger"
-                                                onClick="window.location.href='teamView.php'; return false;">Cancel</button>
+                                                onClick="window.location.href='studentView.php'; return false;">Cancel</button>
                                         </div>
                                     </div>
 
