@@ -234,10 +234,10 @@ if($page_id==1)
             <ul class="menuzord-menu">
               <li><a href="#">About Us</a>
                 <ul class="dropdown">    
-                  <li><a href="institute-details.php">Institute Details</a></li> 
-                  <li><a href="director-msg.php">Directors message</a>   </li>      
-                  <li><a href="principal-msg.php">Principal's message</a>  </li>               
-                  <li><a href="#">Governing body</a>  </li>  
+                  <li><a href="institute-details">Institute Details</a></li> 
+                  <li><a href="directors-message">Directors Message</a>   </li>      
+                  <li><a href="education-policy">Education Policy</a>  </li>               
+                  <!-- <li><a href="#">Governing body</a>  </li>  
                   <li><a href="#">Stautory committees</a>
                     <ul class="dropdown">
                       <li><a href="stautory-committees.php">Academic Council</a></li>
@@ -246,7 +246,7 @@ if($page_id==1)
                       <li><a href="stautory-committees.php"> Anti ragging Squad </a></li>
                       <li><a href="stautory-committees.php"> Women sexual haressment cell </a></li>                                        
                     </ul>
-                  </li>               
+                  </li>                -->
                 </ul>
               </li>
 

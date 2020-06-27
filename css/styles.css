@@ -89,6 +89,10 @@
     overflow-x:auto;
 }
   
+.my_desc__about ul li {
+    margin-bottom : 16px;
+}
+  
 /* .my_desc tr:nth-child(even){background-color: #f2f2f2} */
 
 @media(max-width: 768px){

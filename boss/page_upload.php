@@ -11,14 +11,14 @@ $cn->connectdb();
  	  
 if(isset($_POST['add']))
 {
-  	$page_name=$_POST['page_name'];
+  	$page_name=mysqli_real_escape_string($cn->getConnection(),$_POST['page_name']);
 	$page_desc=$_POST['page_desc'];
 	$page_parent_id=$_POST['page_parent_id'];
 	
 	$meta_tag_title=$_POST['meta_tag_title'];
 	$meta_tag_description=$_POST['meta_tag_description'];
 	$meta_tag_keywords=$_POST['meta_tag_keywords'];
-	$slug=$_POST['slug'];
+	$slug=mysqli_real_escape_string($cn->getConnection(),$_POST['slug']);
 
 	
 	$title=implode("NEWTITLE",$_POST['title']);
@@ -74,11 +74,11 @@ if(isset($_POST['add']))
 if(isset($_POST['update']))
 {
   	$page=  $_POST['page'];
-	$page_name=$_POST['page_name'];
+	$page_name=mysqli_real_escape_string($cn->getConnection(),$_POST['page_name']);
 	$page_id=$_POST['page_id'];
 	$page_desc=$_POST['page_desc'];
 	$page_parent_id=$_POST['page_parent_id'];
-	$slug=$_POST['slug'];
+	$slug=mysqli_real_escape_string($cn->getConnection(),$_POST['slug']);
 
 	$meta_tag_title=$_POST['meta_tag_title'];
 	$meta_tag_description=$_POST['meta_tag_description'];

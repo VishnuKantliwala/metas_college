@@ -1,5 +1,5 @@
 <?
-$page_id = 12;
+$page_id = 13;
 include_once("header.php");
 $sql = $cn->selectdb("select extra_icon from tbl_addmore where page_id =$page_id");
 $row = $cn->fetchAssoc($sql);
