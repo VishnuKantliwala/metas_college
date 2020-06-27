@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/cpanelUser/public_html/metasofsda.in/College/
+    - /bin/cp -R * $DEPLOYPATH
+    
