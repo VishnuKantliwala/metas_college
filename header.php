@@ -68,7 +68,7 @@ $cn->connectdb();
         ?>
 
 
-    <title>|| Metas Adventist college |
+    <title>| Metas Adventist college ||
         <?echo $row1['meta_tag_title']?>
     </title>
     <meta name="description" content="<?echo $row1['meta_tag_description']?>">
