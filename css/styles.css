@@ -92,7 +92,28 @@
 .my_desc__about ul li {
     margin-bottom : 16px;
 }
-  
+.btn__ask  {
+    display: none !important;
+}
+
+.btn__application_link {
+    background-color: #84499d;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 20px;
+    width: 100%;
+    height: 200px;
+    padding: 50px 160px;
+    text-decoration: none;
+    transition: 0.3s;  
+}
+.btn__application_link:focus{
+    color: #fff;
+}
+.btn__application_link:hover {
+    background-color: #29084d;
+    color: #fff;
+}  
 /* .my_desc tr:nth-child(even){background-color: #f2f2f2} */
 
 @media(max-width: 768px){
@@ -108,5 +129,14 @@
     .my_desc table {
         width: 700px !important;
     }
+
+    .btn__ask {
+        display: block !important;
+
+    }
+    .btn__application_link { 
+        
+    }
+
     
 }

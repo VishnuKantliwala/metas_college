@@ -287,25 +287,10 @@ if($page_id==1)
 
               <li><a href="#">Addmission</a>
                 <ul class="dropdown">                                                
-                  <li><a href="#">Commerce</a>
-                    <ul class="dropdown">
-                      <li><a href="addmission.php">BCOM</a></li>  
-                                                        
-                    </ul>
-                  </li>
-                  <li><a href="#">Management</a>
-                    <ul class="dropdown">
-                      <li><a href="addmission.php">BBA</a></li>  
-                      <li><a href="addmission.php">MBA</a></li>  
-                                                        
-                    </ul>
-                  </li>
-                  <li><a href="#">General Nursing</a>
-                    <ul class="dropdown">
-                      <li><a href="addmission.php">GNM</a></li>  
-                                                         
-                    </ul>
-                  </li>
+                  <li><a href="application-for-ug-pg-phd">Application for UG / PG / PHD</a></li>
+                  <li><a href="cancellation-policy">Cancellation Policy</a></li>
+                  <li><a href="faqs">FAQs</a></li>
+                  
                 </ul>
               </li>
 
@@ -350,7 +335,9 @@ if($page_id==1)
 
               <li><a href="#">Student Corner</a>
                 <ul class="dropdown">  
-                  <li><a href="academic-calendar.php"> 	Academic Calendar </a></li>  
+                  <li><a href="students-corner"> About Us </a></li>
+                  <li><a href="students-research"> R & D </a></li>
+                  <li><a href="academic-calendar.php"> Academic Calendar </a></li>  
                   <li><a href="code-of-conduct.php"> Code of Conduct  </a></li> 
                   <li><a href="#"> 	Examination </a></li> 
                   <li><a href="#"> 		Scholarship </a></li>                  

@@ -46,6 +46,18 @@
                             <li>
                                 <a href="projectCatView.php">
                                     <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Addmission </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="applicationBlogView.php"> Application for UG / PG / PHD </a></li>
+                                    <li><a href="cancellationPolicy.php"> Cancellation Policy </a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="projectCatView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
                                     <span> Project </span>
                                     <span class="menu-arrow"></span>
                                 </a>

@@ -231,7 +231,10 @@ if ( isset( $inputName ) )
 	if ($_FILES[$inputName]['type'] == "application/pdf") 
 	{
 		$source_file = $_FILES[$inputName]['tmp_name'];
-		$dest_file = $uploadDir.$_FILES[$inputName]['name'];
+		$namearr=explode(".",$_FILES[$inputName]['name']);
+		//echo "<script>alert('".$name."');</script>";
+		$name=$namearr[0].rand(10000, 99999).'.pdf';
+		$dest_file = $uploadDir.$name;
 
 		if (file_exists($dest_file)) {
 			print "The file name already exists!!";
@@ -241,7 +244,7 @@ if ( isset( $inputName ) )
 			or die ("Error!!");
 			if($_FILES[$inputName]['error'] == 0) 
 			{
-				return $_FILES[$inputName]['name'];
+				return $name;
 			}
 		}
 	}

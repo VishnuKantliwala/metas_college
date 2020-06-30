@@ -24,6 +24,13 @@ RewriteRule ^course-category/(.*)/? course_categories.php?cid=$1 [L]
 RewriteRule ^institute-details/? institute-details.php [L]
 RewriteRule ^directors-message/? director-msg.php [L]
 RewriteRule ^education-policy/? education-policy.php [L]
+RewriteRule ^students-corner/? students-corner.php [L]
+RewriteRule ^students-research/? students-category.php [L]
+
+RewriteRule ^application-for-ug-pg-phd/? application.php [L]
+RewriteRule ^cancellation-policy/? cancellation_policy.php [L]
+RewriteRule ^faqs/? faqs.php [L]
+
 
 # RewriteEngine On
 # RewriteCond %{HTTP_HOST} !=""
