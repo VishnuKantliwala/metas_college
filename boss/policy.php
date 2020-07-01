@@ -92,7 +92,7 @@ if(isset($_POST['editbtn']))
                 </li>
 
                 <li>
-                    <h4 class="page-title-main">Logo</h4>
+                    <h4 class="page-title-main">Cancellation policy</h4>
                 </li>
 
             </ul>
@@ -116,7 +116,7 @@ if(isset($_POST['editbtn']))
                     <div class="row">
                         <div class="col-12">
                             <div class="card-box">
-                                <h4 class="mt-0 header-title">Logo Form</h4>
+                                <!-- <h4 class="mt-0 header-title">Cancellation policy Form</h4> -->
                                 <form class="form-horizontal" method="post" 
                                     id="myform" name="myform" enctype="multipart/form-data">
                                     <?php

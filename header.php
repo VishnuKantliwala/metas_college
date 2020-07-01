@@ -287,7 +287,7 @@ if($page_id==1)
 
               <li><a href="#">Addmission</a>
                 <ul class="dropdown">                                                
-                  <li><a href="application-for-ug-pg-phd">Application for UG / PG / PHD</a></li>
+                  <li><a href="application-for-ug-pg-phd/1/">Application for UG / PG / PHD</a></li>
                   <li><a href="cancellation-policy">Cancellation Policy</a></li>
                   <li><a href="faqs">FAQs</a></li>
                   

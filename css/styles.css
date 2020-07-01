@@ -103,7 +103,7 @@
     font-size: 20px;
     width: 100%;
     height: 200px;
-    padding: 50px 160px;
+    padding: 30px 160px;
     text-decoration: none;
     transition: 0.3s;  
 }
@@ -115,6 +115,19 @@
     color: #fff;
 }  
 /* .my_desc tr:nth-child(even){background-color: #f2f2f2} */
+.div__application_link {
+    height: 90px;
+}
+
+.my_desc_listing {
+    height:74px;
+    overflow:hidden;
+    /* font-size: 12px !important; */
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
 
 @media(max-width: 768px){
     .slider_icons {
@@ -135,8 +148,10 @@
 
     }
     .btn__application_link { 
-        
+        padding: 26px 100px;
+
     }
+    
 
     
 }

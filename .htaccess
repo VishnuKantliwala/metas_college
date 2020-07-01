@@ -27,7 +27,8 @@ RewriteRule ^education-policy/? education-policy.php [L]
 RewriteRule ^students-corner/? students-corner.php [L]
 RewriteRule ^students-research/? students-category.php [L]
 
-RewriteRule ^application-for-ug-pg-phd/? application.php [L]
+RewriteRule ^application-for-ug-pg-phd/(.*)/? application.php?page=$1 [L]
+RewriteRule ^application-blog/(.*)/? application_blog.php?bid=$1 [L]
 RewriteRule ^cancellation-policy/? cancellation_policy.php [L]
 RewriteRule ^faqs/? faqs.php [L]
 
