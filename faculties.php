@@ -55,8 +55,8 @@ extract($row);
           
           
         </div>
-        <div id="loader_image text-center row">
-          <img id="loader_image" src="./images/loader.gif" style="width:50px;" />
+        <div id="loader_image text-center row" style="width:100%;    text-align: center;">
+          <img id="loader_image" src="./images/loader.gif" style="width:30px;" />
       </div>
       </div>
     </section>
