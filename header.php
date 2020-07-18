@@ -14,58 +14,58 @@ $cn->connectdb();
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 
 <?
-            $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_page` where page_id=$page_id" );
-            //	echo $cn->numRows($sql2);
-            if ($cn->numRows($sql) > 0) 
-            {
-                $row1 = $cn->fetchAssoc($sql);
-                $page_id_f=$page_id;
-            }
-        ?>
-    <?
-            if(isset($pid))
-            {
-                $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_product` where slug='".$pid."'" );
-            //	echo $cn->numRows($sql2);
-                if ($cn->numRows($sql) > 0) 
-                {
-                    $row1 = $cn->fetchAssoc($sql);
-                }
-            }
-        ?>
-    <?
-            if(isset($cid))
-            {
-                $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_category` where slug='".$cid."'" );
-            //	echo $cn->numRows($sql2);
-                if ($cn->numRows($sql) > 0) 
-                {
-                    $row1 = $cn->fetchAssoc($sql);
-                }
-            }
-        ?>
-        <?
-            if(isset($tcid))
-            {
-                $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_team_category` where slug='".$tcid."'" );
-            //	echo $cn->numRows($sql2);
-                if ($cn->numRows($sql) > 0) 
-                {
-                    $row1 = $cn->fetchAssoc($sql);
-                }
-            }
-        ?>
-        <?
-            if(isset($tid))
-            {
-                $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_team` where slug='".$tid."'" );
-            //	echo $cn->numRows($sql2);
-                if ($cn->numRows($sql) > 0) 
-                {
-                    $row1 = $cn->fetchAssoc($sql);
-                }
-            }
-        ?>
+$sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_page` where page_id=$page_id" );
+//	echo $cn->numRows($sql2);
+if ($cn->numRows($sql) > 0) 
+{
+    $row1 = $cn->fetchAssoc($sql);
+    $page_id_f=$page_id;
+}
+?>
+<?
+if(isset($pid))
+{
+    $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_product` where slug='".$pid."'" );
+//	echo $cn->numRows($sql2);
+    if ($cn->numRows($sql) > 0) 
+    {
+        $row1 = $cn->fetchAssoc($sql);
+    }
+}
+?>
+<?
+if(isset($cid))
+{
+    $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_category` where slug='".$cid."'" );
+//	echo $cn->numRows($sql2);
+    if ($cn->numRows($sql) > 0) 
+    {
+        $row1 = $cn->fetchAssoc($sql);
+    }
+}
+?>
+<?
+if(isset($tcid))
+{
+    $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_team_category` where slug='".$tcid."'" );
+//	echo $cn->numRows($sql2);
+    if ($cn->numRows($sql) > 0) 
+    {
+        $row1 = $cn->fetchAssoc($sql);
+    }
+}
+?>
+<?
+if(isset($tid))
+{
+    $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_team` where slug='".$tid."'" );
+//	echo $cn->numRows($sql2);
+    if ($cn->numRows($sql) > 0) 
+    {
+        $row1 = $cn->fetchAssoc($sql);
+    }
+}
+?>
 
 
     <title>| Metas Adventist college |
@@ -84,16 +84,16 @@ $cn->connectdb();
 
 <!-- Favicon and Touch Icons -->
 <?
-    $sqlFav = $cn->selectdb("SELECT image_name FROM  `tbl_favicon` " );
-    if ($cn->numRows($sqlFav) > 0) 
-    {
-        $rowFav = $cn->fetchAssoc($sqlFav);
-        extract($rowFav);
-        ?>
-    <link href="favicon/big_img/<?echo $image_name?>" rel="shortcut icon" type="image/png">
-    <?
-    }
+$sqlFav = $cn->selectdb("SELECT image_name FROM  `tbl_favicon` " );
+if ($cn->numRows($sqlFav) > 0) 
+{
+    $rowFav = $cn->fetchAssoc($sqlFav);
+    extract($rowFav);
     ?>
+<link href="favicon/big_img/<?echo $image_name?>" rel="shortcut icon" type="image/png">
+<?
+}
+?>
 
 <!-- Custom css file -->
 <link href="css/styles.css" rel="stylesheet" type="text/css">
