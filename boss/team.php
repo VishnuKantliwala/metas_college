@@ -39,6 +39,9 @@ if(isset($_POST['addSlider']))
         $team_invites = $_POST['team_invites'];
         $team_thesis = $_POST['team_thesis'];
         $team_workshops = $_POST['team_workshops'];
+        $team_publications = $_POST['team_publications'];
+        $team_books = $_POST['team_books'];
+        $team_conferences = $_POST['team_conferences'];
         
         $slug = $_POST['slug'];
         $meta_tag_title=$_POST['meta_tag_title'];
@@ -55,7 +58,7 @@ if(isset($_POST['addSlider']))
         
 
                         
-        $con->insertdb("INSERT INTO `tbl_team` (`team_title`, `description`,  `image_name`,`meta_tag_title`, `meta_tag_description`, `meta_tag_keywords`, `slug`, `cat_id`,  `team_degree`, `team_position`, `team_email`, `team_qualification`, `team_articles`, `team_presentations`, `team_invites`, `team_thesis`, `team_workshops`) VALUES ('".$team_title."', '".$description."', '".$Image."', '".$meta_tag_title."', '".$meta_tag_description."', '".$meta_tag_keywords."', '".$slug."', '".$catID."', '".$team_degree."', '".$team_position."', '".$team_email."', '".$team_qualification."', '".$team_articles."', '".$team_presentations."', '".$team_invites."', '".$team_thesis."', '".$team_workshops."');");		
+        $con->insertdb("INSERT INTO `tbl_team` (`team_title`, `description`,  `image_name`,`meta_tag_title`, `meta_tag_description`, `meta_tag_keywords`, `slug`, `cat_id`,  `team_degree`, `team_position`, `team_email`, `team_qualification`, `team_articles`, `team_presentations`, `team_invites`, `team_thesis`, `team_workshops`, `team_publications`, `team_books`, `team_conferences`) VALUES ('".$team_title."', '".$description."', '".$Image."', '".$meta_tag_title."', '".$meta_tag_description."', '".$meta_tag_keywords."', '".$slug."', '".$catID."', '".$team_degree."', '".$team_position."', '".$team_email."', '".$team_qualification."', '".$team_articles."', '".$team_presentations."', '".$team_invites."', '".$team_thesis."', '".$team_workshops."', '".$team_publications."', '".$team_books."', '".$team_conferences."');");		
                 
         header("location:teamView.php");
 
@@ -350,6 +353,34 @@ function generate_menu($parent)
                                                 placeholder="Workshop/ FDP/ Training programme attendeds"></textarea>
                                         </div>
                                     </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <label for="inputEmail3" class="col-sm-12 control-label">Publications</label>
+                                        <div class="col-sm-12">
+                                            <textarea type="text" class="ckeditor" id="team_publications"
+                                                name="team_publications"
+                                                ></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-6">
+                                        <label for="inputEmail3" class="col-sm-12 control-label">Books</label>
+                                        <div class="col-sm-12">
+                                            <textarea type="text" class="ckeditor" id="team_books"
+                                                name="team_books"
+                                                ></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-sm-12">
+                                        <label for="inputEmail3" class="col-sm-12 control-label"> Conferences</label>
+                                        <div class="col-sm-12">
+                                            <textarea type="text" class="ckeditor" id="team_conferences"
+                                                name="team_conferences"
+                                                ></textarea>
+                                        </div>
+                                    </div>
+
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Image</label>

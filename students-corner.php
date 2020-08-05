@@ -23,7 +23,7 @@ extract($row);
               <h2 class="title text-white text-center"><?echo $page_name ?></h2>
               <ol class="breadcrumb text-left text-black mt-10">
                 <li><a href="./">Home</a></li>
-                <li><a href="javascript:void(0)">About Us</a></li>
+                <!-- <li><a href="javascript:void(0)">About Us</a></li> -->
                 <li class="active text-gray-silver"> <?echo $page_name ?></li>
               </ol>
             </div>

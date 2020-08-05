@@ -111,7 +111,7 @@ $pageID= 'page6';
                             <div class="card-box">
                             <div class="sortable">
                                 <?php
-								$query  = "SELECT * FROM tbl_page ORDER BY recordListingID ASC";
+								$query  = "SELECT * FROM tbl_page WHERE page_parent_id = '".$_GET['parentid']."' ORDER BY recordListingID ASC";
 								$result = $cn->selectdb($query);
 								
 								while($row = mysqli_fetch_assoc($result))

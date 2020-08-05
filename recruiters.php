@@ -1,229 +1,70 @@
-<?php $page_id=''; include 'header.php'; ?>
+<?
+$page_id = 49;
+include_once("header.php");
 
-
+$sql = $cn->selectdb("select image, page_name, page_desc from tbl_page where page_id =$page_id");
+$row = $cn->fetchAssoc($sql);
+extract($row);
+?>
 <!-- Start main-content -->
 <div class="main-content bg-lighter">
     <!-- Section: inner-header -->
-    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="images/bg/bg1.jpg">
-      <div class="container pt-70 pb-20">
-        <!-- Section Content -->
-        <div class="section-content">
-          <div class="row">
-            <div class="col-md-12">
-              <h2 class="title text-white text-center"> Recruiters</h2>
-              <ol class="breadcrumb text-left text-black mt-10">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Student Corner</a></li>
-                <li class="active text-gray-silver"> Recruiters</li>
-              </ol>
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5"
+        data-bg-img="page/big_img/<?echo $image?>">
+
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="title text-white text-center">
+                            <?echo $page_name ?>
+                        </h2>
+                        <ol class="breadcrumb text-left text-black mt-10">
+                            <li><a href="./">Home</a></li>
+                            <li><a href="javascript:void(0)">Students corner</a></li>
+                            <li><a href="javascript:void(0)">Placements</a></li>
+                            <li class="active text-gray-silver">
+                                <?echo $page_name ?>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
+
 
     <!-- Section: About -->
     <section id="about" class="divider parallax layer-overlay overlay-light" data-bg-img="images/bg/metasLogo.jpg">
-      <div class="container mt-50 pb-70 pt-0">
-        <div class="section-content">
-          
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/1.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
+        <div class="container mt-50 pb-70 pt-0">
+            <div class="section-content">
+
+                <div class="row" id="results">
+                    
+
+
+
+
                 </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/2.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
+                <div id="loader_image text-center row" style="width:100%;    text-align: center;">
+                    <img id="loader_image" src="./images/loader.gif" style="width:30px;" />
                 </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/3.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/4.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/5.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/6.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/2.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/3.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/4.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/5.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/6.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/3.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/5.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/6.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/2.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/3.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/4.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-
-
-                <div class="col-md-2">
-                    <div class="attorney">
-                        <div class="thumb"><img src="images/clients/5.png" alt=""></div>
-                        <div class="content text-center">
-                            <h5 class="author mb-0"><a class="text-theme-colored" href="#">ICED Infotech</a></h5>
-                        </div>  
-                    </div>
-                </div>
-               
             </div>
+
+
+
         </div>
-
-
-       
-      </div>
     </section>
 
 
 
-<?php include 'footer.php'; ?>
+    <?php include 'footer.php'; ?>
+    <script src="js/scroll.js" id="helper" cat_id="0" file-name="getrecruiters.php" limit="18"
+    pid="0"  ></script>
 
-<style>
-.attorney{
-    padding-bottom:50px;
-}
-</style>
+    <style>
+    .attorney {
+        padding-bottom: 20px;
+    }
+    </style>

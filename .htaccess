@@ -23,6 +23,8 @@ RewriteRule ^faculty/(.*)/? faculty.php?tid=$1 [L]
 RewriteRule ^course-category/(.*)/? course_categories.php?cid=$1 [L]
 RewriteRule ^institute-details/? institute-details.php [L]
 RewriteRule ^directors-message/? director-msg.php [L]
+RewriteRule ^affiliations-and-accreditation/? affiliations.php [L]
+
 RewriteRule ^education-policy/? education-policy.php [L]
 RewriteRule ^students-corner/? students-corner.php [L]
 RewriteRule ^students-research/? students-category.php [L]
@@ -31,6 +33,33 @@ RewriteRule ^application-for-ug-pg-phd/(.*)/? application.php?page=$1 [L]
 RewriteRule ^application-blog/(.*)/? application_blog.php?bid=$1 [L]
 RewriteRule ^cancellation-policy/? cancellation_policy.php [L]
 RewriteRule ^faqs/? faqs.php [L]
+RewriteRule ^academic-calendar/? academic-calendar2.php [L]
+RewriteRule ^code-of-conduct/? code-of-conduct.php [L]
+RewriteRule ^infrastructure/(.*)/? infrastructure.php?ifid=$1 [L]
+
+RewriteRule ^activities/(.*)/? activity-list.php?acid=$1 [L]
+RewriteRule ^activity-details/(.*)/? activity-detail.php?aid=$1 [L]
+
+RewriteRule ^alumni-list/(.*)/? alumni-detail.php?aid=$1 [L]
+RewriteRule ^alumni-list/? alumni.php [L]
+
+RewriteRule ^alumni-registration/? alumni-registration.php [L]
+
+# Student corner
+RewriteRule ^memorandum-of-understanding/? mou.php [L]
+RewriteRule ^recruiters/? recruiters.php [L]
+RewriteRule ^students-wise-placement-information/? student-placements.php [L]
+RewriteRule ^examination/? examination.php [L]
+
+
+# R & D
+RewriteRule ^research-and-development-cell/? randd-cell.php [L]
+RewriteRule ^research-and-development/? randd-list.php [L]
+
+RewriteRule ^publications/? publications.php [L]
+RewriteRule ^conferences/? conferences.php [L]
+RewriteRule ^workshops/? workshops.php [L]
+RewriteRule ^fdp-and-ftp/? fdp-and-ftp.php [L]
 
 
 # RewriteEngine On

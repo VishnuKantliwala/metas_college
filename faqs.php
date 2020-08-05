@@ -26,7 +26,7 @@ extract($row);
                         </h2>
                         <ol class="breadcrumb text-left text-black mt-10">
                             <li><a href="./">Home</a></li>
-                            <li><a href="javascript:void(0)">About Us</a></li>
+                            <!-- <li><a href="javascript:void(0)">About Us</a></li> -->
                             <li class="active text-gray-silver">
                                 <?echo $page_name ?>
                             </li>

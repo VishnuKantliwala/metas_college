@@ -1,4 +1,6 @@
-<?php $page_id=''; include 'header.php'; ?>
+<?php 
+$page_id=''; 
+include 'header.php'; ?>
 
 <!-- Start main-content -->
 <div class="main-content bg-lighter">

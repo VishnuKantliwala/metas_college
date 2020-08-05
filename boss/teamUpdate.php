@@ -34,6 +34,10 @@ if(isset($_POST['updateSlider']))
     $team_invites = $_POST['team_invites'];
     $team_thesis = $_POST['team_thesis'];
     $team_workshops = $_POST['team_workshops'];
+    $team_publications = $_POST['team_publications'];
+    $team_books = $_POST['team_books'];
+    $team_conferences = $_POST['team_conferences'];
+
     $meta_tag_title=$_POST['meta_tag_title'];
     $meta_tag_description=$_POST['meta_tag_description'];
     $meta_tag_keywords=$_POST['meta_tag_keywords'];	
@@ -64,7 +68,7 @@ if(isset($_POST['updateSlider']))
         $sqlFile = ", `image_name` = '".$sliderImage."'";
     }
                 
-    $con->insertdb("UPDATE `tbl_team` SET `team_title` = '".$team_title."', `description` = '".$description."'  ".$sqlFile.", meta_tag_title='".$meta_tag_title."',meta_tag_description='".$meta_tag_description."',meta_tag_keywords='".$meta_tag_keywords."',slug='".$slug."',cat_id='".$catID."', `team_email` = '".$team_email."', `team_degree` = '".$team_degree."', `team_position` = '".$team_position."', `team_qualification` = '".$team_qualification."', `team_articles` = '".$team_articles."', `team_presentations` = '".$team_presentations."', `team_invites` = '".$team_invites."', `team_email` = '".$team_email."', `team_thesis` = '".$team_thesis."', `team_workshops` = '".$team_workshops."' WHERE `tbl_team`.`team_id` = '".$team_id."'");
+    $con->insertdb("UPDATE `tbl_team` SET `team_title` = '".$team_title."', `description` = '".$description."'  ".$sqlFile.", meta_tag_title='".$meta_tag_title."',meta_tag_description='".$meta_tag_description."',meta_tag_keywords='".$meta_tag_keywords."',slug='".$slug."',cat_id='".$catID."', `team_email` = '".$team_email."', `team_degree` = '".$team_degree."', `team_position` = '".$team_position."', `team_qualification` = '".$team_qualification."', `team_articles` = '".$team_articles."', `team_presentations` = '".$team_presentations."', `team_invites` = '".$team_invites."', `team_email` = '".$team_email."', `team_thesis` = '".$team_thesis."', `team_workshops` = '".$team_workshops."', `team_publications` = '".$team_publications."',`team_books` = '".$team_books."', `team_conferences` = '".$team_conferences."' WHERE `tbl_team`.`team_id` = '".$team_id."'");
 
 	
 	header("location: teamView.php?page=$page");
@@ -319,8 +323,9 @@ function generate_menu($parent)
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Position</label>
                                         <div class="col-sm-12">
-                                            <input type="text" class="form-control" id="team_position" name="team_position"
-                                                placeholder="Position" required value="<? echo $row['team_position']; ?>">
+                                            <input type="text" class="form-control" id="team_position"
+                                                name="team_position" placeholder="Position" required
+                                                value="<? echo $row['team_position']; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -346,7 +351,8 @@ function generate_menu($parent)
                                                 class="col-sm-12 control-label">Qualification</label>
                                             <div class="col-sm-12">
                                                 <textarea type="text" class="ckeditor" id="team_qualification"
-                                                    name="team_qualification" placeholder="Qualification"><? echo $row['team_qualification']; ?></textarea>
+                                                    name="team_qualification"
+                                                    placeholder="Qualification"><? echo $row['team_qualification']; ?></textarea>
                                             </div>
                                         </div>
 
@@ -355,7 +361,8 @@ function generate_menu($parent)
                                                 journals</label>
                                             <div class="col-sm-12">
                                                 <textarea type="text" class="ckeditor" id="team_articles"
-                                                    name="team_articles" placeholder="Articles in journals"><? echo $row['team_articles']; ?></textarea>
+                                                    name="team_articles"
+                                                    placeholder="Articles in journals"><? echo $row['team_articles']; ?></textarea>
                                             </div>
                                         </div>
 
@@ -377,7 +384,8 @@ function generate_menu($parent)
                                                 Talks</label>
                                             <div class="col-sm-12">
                                                 <textarea type="text" class="ckeditor" id="team_invites"
-                                                    name="team_invites" placeholder="Invited Talks"><? echo $row['team_invites']; ?></textarea>
+                                                    name="team_invites"
+                                                    placeholder="Invited Talks"><? echo $row['team_invites']; ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -386,13 +394,15 @@ function generate_menu($parent)
                                             <label for="inputEmail3" class="col-sm-12 control-label">MPhil / PhD
                                                 thesis</label>
                                             <div class="col-sm-12">
-                                                <textarea type="text" class="ckeditor" id="team_thesis" name="team_thesis"
+                                                <textarea type="text" class="ckeditor" id="team_thesis"
+                                                    name="team_thesis"
                                                     placeholder="MPhil / PhD thesis"><? echo $row['team_thesis']; ?></textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group col-sm-6">
-                                            <label for="inputEmail3" class="col-sm-12 control-label">Workshop/ FDP/ Training
+                                            <label for="inputEmail3" class="col-sm-12 control-label">Workshop/ FDP/
+                                                Training
                                                 programme attendeds</label>
                                             <div class="col-sm-12">
                                                 <textarea type="text" class="ckeditor" id="team_workshops"
@@ -400,8 +410,33 @@ function generate_menu($parent)
                                                     placeholder="Workshop/ FDP/ Training programme attendeds"><? echo $row['team_workshops']; ?></textarea>
                                             </div>
                                         </div>
+                                        <div class="form-group col-sm-6">
+                                            <label for="inputEmail3"
+                                                class="col-sm-12 control-label">Publications</label>
+                                            <div class="col-sm-12">
+                                                <textarea type="text" class="ckeditor" id="team_publications"
+                                                    name="team_publications"><? echo $row['team_publications']; ?></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                            <label for="inputEmail3" class="col-sm-12 control-label">Books</label>
+                                            <div class="col-sm-12">
+                                                <textarea type="text" class="ckeditor" id="team_books"
+                                                    name="team_books"><? echo $row['team_books']; ?></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-sm-12">
+                                            <label for="inputEmail3" class="col-sm-12 control-label">
+                                                Conferences</label>
+                                            <div class="col-sm-12">
+                                                <textarea type="text" class="ckeditor" id="team_conferences"
+                                                    name="team_conferences"><? echo $row['team_conferences']; ?></textarea>
+                                            </div>
+                                        </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Image:</label>
                                         <div class="col-sm-4">

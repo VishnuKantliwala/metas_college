@@ -10,7 +10,7 @@ $domain = $protocol . $_SERVER['HTTP_HOST'] . $path."/";
 class connect {
 	public $_connection;
 	private static $_instance; //The single instance
-private $_host = "localhost";
+	private $_host = "localhost";
 	private $_username = "root";
 	private $_password = "";
 	public $_database = "metas_db";
@@ -56,6 +56,11 @@ private $_host = "localhost";
 	// Get mysqli connection
 	public function getConnection() {
 		return $this->_connection;
+	}
+
+	public function getLastInsertId()
+	{
+		return mysqli_insert_id($this->_connection);
 	}
 	
 	public function getCategories($cat_id, $category_table = 'tbl_category', $product_table = "tbl_product", $categories_link = "Categories/")

@@ -109,6 +109,56 @@ extract($row);
                             ?>
 
                             <?
+                            if(strip_tags($team_publications) != '')
+                            {
+                                if(!$flag)
+                                {
+                                    $flag = true;
+                                    $class = "active";
+                                }
+                                else
+                                    $class = "";
+                            ?>
+                            <li class="<?echo $class?>"><a href="#team_publications" data-toggle="tab">Publications</a></li>
+                            <?
+                            }
+                            ?>
+
+                            <?
+                            if(strip_tags($team_books) != '')
+                            {
+                                if(!$flag)
+                                {
+                                    $flag = true;
+                                    $class = "active";
+                                }
+                                else
+                                    $class = "";
+                            ?>
+                            <li class="<?echo $class?>"><a href="#team_books" data-toggle="tab">Books</a></li>
+                            <?
+                            }
+                            ?>
+
+                            <?
+                            if(strip_tags($team_conferences) != '')
+                            {
+                                if(!$flag)
+                                {
+                                    $flag = true;
+                                    $class = "active";
+                                }
+                                else
+                                    $class = "";
+                            ?>
+                            <li class="<?echo $class?>"><a href="#team_conferences" data-toggle="tab">Conferences</a></li>
+                            <?
+                            }
+                            ?>
+
+                            
+
+                            <?
                             if(strip_tags($team_presentations) != '')
                             {
                                 if(!$flag)
@@ -201,6 +251,7 @@ extract($row);
                             <?
                             }
                             ?>
+
                             <?
                             if(strip_tags($team_articles) != '')
                             {
@@ -218,6 +269,61 @@ extract($row);
                             <?
                             }
                             ?>
+
+                            <?
+                            if(strip_tags($team_publications) != '')
+                            {
+                                if(!$flag)
+                                {
+                                    $flag = true;
+                                    $class = "in active";
+                                }
+                                else
+                                    $class = "";
+                            ?>
+                            <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_publications">
+                                <?echo $team_publications ?>
+                            </div>
+                            <?
+                            }
+                            ?>
+
+                            <?
+                            if(strip_tags($team_books) != '')
+                            {
+                                if(!$flag)
+                                {
+                                    $flag = true;
+                                    $class = "in active";
+                                }
+                                else
+                                    $class = "";
+                            ?>
+                            <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_books">
+                                <?echo $team_books ?>
+                            </div>
+                            <?
+                            }
+                            ?>
+
+                            <?
+                            if(strip_tags($team_conferences) != '')
+                            {
+                                if(!$flag)
+                                {
+                                    $flag = true;
+                                    $class = "in active";
+                                }
+                                else
+                                    $class = "";
+                            ?>
+                            <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_conferences">
+                                <?echo $team_conferences ?>
+                            </div>
+                            <?
+                            }
+                            ?>
+
                             <?
                             if(strip_tags($team_presentations) != '')
                             {

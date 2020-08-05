@@ -66,9 +66,19 @@ if(isset($tid))
     }
 }
 ?>
+<?
+if(isset($ifid))
+{
+    $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_page` where slug='".$ifid."'" );
+//	echo $cn->numRows($sql2);
+    if ($cn->numRows($sql) > 0) 
+    {
+        $row1 = $cn->fetchAssoc($sql);
+    }
+}
+?>
 
-
-    <title>| Metas Adventist college |
+    <title>| Metas Adventist college ||
         <?echo $row1['meta_tag_title']?>
     </title>
     <meta name="description" content="<?echo $row1['meta_tag_description']?>">
@@ -237,6 +247,7 @@ if($page_id==1)
                   <li><a href="institute-details">Institute Details</a></li> 
                   <li><a href="directors-message">Directors Message</a>   </li>      
                   <li><a href="education-policy">Education Policy</a>  </li>               
+                  <li><a href="affiliations-and-accreditation">Affiliations & Accreditation</a>  </li>               
                   <!-- <li><a href="#">Governing body</a>  </li>  
                   <li><a href="#">Stautory committees</a>
                     <ul class="dropdown">
@@ -295,40 +306,45 @@ if($page_id==1)
               </li>
 
               <li><a href="#">Infrastructure</a>
-                <ul class="dropdown">  
-                  <li><a href="infrastructure.php"> Library </a></li> 
-                  <li><a href="infrastructure.php"> Students Centre </a></li> 
-                  <li><a href="infrastructure.php"> Hostel </a></li> 
-                  <li><a href="#"> Auditoruim </a></li> 
-                  <li><a href="#"> Gymnasium </a></li> 
-                  <li><a href="#"> Computer lab </a></li> 
-                  <li><a href="#"> Language Lab </a></li> 
-                  <li><a href="#"> Conference hall </a></li> 
-                  <li><a href="#"> Play ground  </a></li> 
-                  <li><a href="#"> Lift </a></li>                                
-                  <li><a href="#">Safety</a>
-                    <ul class="dropdown">
-                      <li><a href="#">Fire safety</a></li>  
-                      <li><a href="#">Security</a></li>                                   
-                    </ul>
-                  </li>
+                <ul class="dropdown">
+                  <?php
+                    $sql="SELECT page_id,page_name,slug FROM tbl_page where page_parent_id=19";
+                    $result=$cn->selectdb($sql);
+                    if($cn->numRows($result)>0){
+                      while($row=$cn->fetchAssoc($result)){
+                        $sql="SELECT page_id,page_name,slug FROM tbl_page where page_parent_id=".$row['page_id'];
+                        $result1=$cn->selectdb($sql);
+                        if($cn->numRows($result1)>0){
+                  ?>
+                        <li><a href="#"><?php echo $row['page_name'];?></a>
+                          <ul class="dropdown">
+                        <?php
+                            while($row11=$cn->fetchAssoc($result1)){
+                        ?>
+                              <li><a href="infrastructure/<?php echo $row11['slug'];?>"><?php echo $row11['page_name'];?></a></li>
+                        <?php
+                            }
+                        ?>
+                            
+                          </ul>
+                        </li>
+                  <?php
+                        }else{
+                  ?>
+                      <li><a href="infrastructure/<?php echo $row['slug'];?>"><?php echo $row['page_name'];?></a></li>
+                  <?php
+                        }
+                      }
+                    }
+                  ?>
                 </ul>
               </li>
 
-
               <li><a href="#">R & D</a>
                 <ul class="dropdown">  
-                  <li><a href="#"> R & D Cell </a></li>                   
-                  <li><a href="#">Publications</a>
-                    <ul class="dropdown">
-                      <li><a href="#">International</a></li>  
-                      <li><a href="#">National</a></li>       
-                      <li><a href="#">State</a></li>                                   
-                    </ul>
-                  </li>
-                  <li><a href="#"> Conferences  </a></li> 
-                  <li><a href="#"> 	Workshops </a></li> 
-                  <li><a href="#"> 	FDP and FTP </a></li>                                
+                  <li><a href="research-and-development-cell"> R & D Cell </a></li>                   
+                  <li><a href="research-and-development"> R & D </a></li>                   
+                  
                 </ul>
               </li>
 
@@ -337,28 +353,29 @@ if($page_id==1)
                 <ul class="dropdown">  
                   <li><a href="students-corner"> About Us </a></li>
                   <li><a href="students-research"> R & D </a></li>
-                  <li><a href="academic-calendar.php"> Academic Calendar </a></li>  
-                  <li><a href="code-of-conduct.php"> Code of Conduct  </a></li> 
-                  <li><a href="#"> 	Examination </a></li> 
-                  <li><a href="#"> 		Scholarship </a></li>                  
+                  <li><a href="academic-calendar"> Academic Calendar </a></li>  
+                  <li><a href="code-of-conduct"> Code of Conduct  </a></li> 
+                  <li><a href="examination"> Examination </a></li> 
+                  <li><a href="https://scholarships.gov.in/" target="_BLANK"> Scholarship </a></li>                  
                   <li><a href="#">Placements</a>
                     <ul class="dropdown">
-                      <li><a href="#">Student wise Placement Information</a></li>  
-                      <li><a href="#">Recruiters</a></li>  
-                      <li><a href="#">MOU's</a></li>                                                             
+                      <li><a href="students-wise-placement-information">Student wise Placement Information</a></li>  
+                      <li><a href="recruiters">Recruiters</a></li>  
+                      <li><a href="memorandum-of-understanding">MOU's</a></li>                                                             
                     </ul>
                   </li> 
-                  <li><a href="#"> NAAD </a></li> 
-                  <li><a href="#">Alumni Cell</a>
+                  <!-- <li><a href="#"> NAAD </a></li>  -->
+                  <li><a href="javascript:void(0)">Alumni Cell</a>
                     <ul class="dropdown">
-                      <li><a href="#">Registration</a></li>                                                                 
+                      <li><a href="alumni-list">Members</a></li>                                                                 
+                      <li><a href="alumni-registration">Registration</a></li>                                                                 
                     </ul>
                   </li>  
-                  <li><a href="#"> Feedback and Testimonials </a></li>                                              
+                  <!-- <li><a href="#"> Feedback and Testimonials </a></li>                                               -->
                 </ul>
               </li>
-
-              <li><a href="#">Affiliations & Accreditation</a>
+              <li></li>
+              <!-- <li><a href="#">Affiliations & Accreditation</a>
                 <ul class="dropdown">  
                   <li><a href="#"> 	AICTE </a></li>  
                   <li><a href="#"> AAA  </a></li> 
@@ -372,18 +389,21 @@ if($page_id==1)
                     </ul>
                   </li>                                                
                 </ul>
-              </li>
+              </li> -->
            
               <li><a href="#">Acivities</a>
                 <ul class="dropdown">  
-                  <li><a href="#"> 	Management Club </a></li>  
+                  <?
+                  $cn->getMenu(0,"","activities/","activities/",false, 'tbl_eventcategory', 'tbl_event', 'event_title');
+                  ?>
+                  <!-- <li><a href="#"> 	Management Club </a></li>  
                   <li><a href="#"> Vivacity club  </a></li> 
                   <li><a href="#"> Eureka Club </a></li> 
                   <li><a href="#"> Spectrum Club </a></li>  
                   <li><a href="#"> 	Warrior Club </a></li>  
                   <li><a href="#"> Brainwaves Club  </a></li> 
                   <li><a href="#"> Mindskraft Club </a></li> 
-                  <li><a href="#"> Ascent Club </a></li>                                                
+                  <li><a href="#"> Ascent Club </a></li>                                                 -->
                 </ul>
               </li>
                                 

@@ -11,14 +11,14 @@ $cn->connectdb();
  	  
 if(isset($_POST['add']))
 {
-  	$page_name=mysqli_real_escape_string($cn->getConnection(),$_POST['page_name']);
+  	$page_name=$_POST['page_name'];
 	$page_desc=$_POST['page_desc'];
 	$page_parent_id=$_POST['page_parent_id'];
 	
 	$meta_tag_title=$_POST['meta_tag_title'];
 	$meta_tag_description=$_POST['meta_tag_description'];
 	$meta_tag_keywords=$_POST['meta_tag_keywords'];
-	$slug=mysqli_real_escape_string($cn->getConnection(),$_POST['slug']);
+	$slug=$_POST['slug'];
 
 	
 	$title=implode("NEWTITLE",$_POST['title']);
@@ -68,17 +68,17 @@ if(isset($_POST['add']))
 		$con->insertdb("insert into tbl_addmore (`page_id`, `title`, `small_desc`, `extra_desc`, `extra_icon`) values('".$page_id."','".$title."','".$descsd."','".$desc."','".$multi_icons_image."')");
 		}
 	}
-	header("location:pageView.php");
+	header("location:pageView.php?parentid=".$page_parent_id);
 }
 
 if(isset($_POST['update']))
 {
   	$page=  $_POST['page'];
-	$page_name=mysqli_real_escape_string($cn->getConnection(),$_POST['page_name']);
+	$page_name=$_POST['page_name'];
 	$page_id=$_POST['page_id'];
 	$page_desc=$_POST['page_desc'];
 	$page_parent_id=$_POST['page_parent_id'];
-	$slug=mysqli_real_escape_string($cn->getConnection(),$_POST['slug']);
+	$slug=$_POST['slug'];
 
 	$meta_tag_title=$_POST['meta_tag_title'];
 	$meta_tag_description=$_POST['meta_tag_description'];
@@ -176,7 +176,9 @@ if(isset($_POST['update']))
 			}
 		}	
 	}
-	header("location:pageView.php?page=$page");
+	// header("location:pageView.php?page=$page");
+	header("location:pageView.php?parentid=".$page_parent_id);
+
 }
 
 //Delete

@@ -73,6 +73,28 @@ include 'header.php'; ?>
 
 
                 </div>
+                <div class="row border-5 news-box wow fadeInLeft animation-delay1">
+                    <div class='marquee' style="width:100%;overflow:hidden">
+                        <?
+                        $sqlNews = $cn->selectdb("select * from tbl_news order by recordListingID ");
+                        if( $cn->numRows($sqlNews) > 0 )
+                        {
+                            while($rowNews = $cn->fetchAssoc($sqlNews))
+                            {
+                                if($rowNews['link_url']!='')
+                                    $href= "href='http://".$rowNews['link_url'] ."' target='_BLANk'";
+                                else
+                                    $href = "javascript:void(0)";
+                        ?>
+                        <i class="fa fa-hand-o-right"></i> <a <?echo $href?> style="margin-right:20px">
+                            <?echo $rowNews['news_name'] ?></a>
+                        <?
+                            }   
+                        }
+                        ?>
+
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -93,10 +115,14 @@ include 'header.php'; ?>
             <div class="section-content">
                 <div class="row">
                     <div class="col-md-8 col-sm-12 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s">
-                        <h2 class="text-uppercase mt-0"><?echo $page_name ?></h2>
-                        <p class="lead"><?echo strip_tags($page_desc) ?></p>
+                        <h2 class="text-uppercase mt-0">
+                            <?echo $page_name ?>
+                        </h2>
+                        <p class="lead">
+                            <?echo strip_tags($page_desc) ?>
+                        </p>
                         <div class="row mt-40">
-                          <?
+                            <?
                             $sqlHomeAboutMore = $cn->selectdb('SELECT title, small_desc, extra_icon from tbl_addmore where page_id = 3');
                             if( $cn->numRows($sqlHomeAboutMore) > 0 )
                             {
@@ -107,8 +133,10 @@ include 'header.php'; ?>
                           ?>
                             <div class="col-md-6 wow fadeInUp" data-wow-duration="1s">
                                 <div class="mb-sm-30">
-                                    <img class="img-fullwidth home_about_img" src="icon/big_img/<?echo $extra_icon?>" alt="<?echo $extra_icon?>">
-                                    <h4 class="letter-space-1 mt-10"><span class="text-theme-color-2"> <?echo $title ?></span>
+                                    <img class="img-fullwidth home_about_img" src="icon/big_img/<?echo $extra_icon?>"
+                                        alt="<?echo $extra_icon?>">
+                                    <h4 class="letter-space-1 mt-10"><span class="text-theme-color-2">
+                                            <?echo $title ?></span>
                                     </h4>
                                     <?echo $small_desc ?>
                                     <!-- <a href="#" class="btn btn-sm btn-theme-colored">Read more</a> -->
@@ -124,8 +152,7 @@ include 'header.php'; ?>
                         <div class="p-30 bg-theme-colored mt-10">
                             <h3 class="text-white mt-0 mb-10">Inquiry Form</h3>
                             <!-- Appilication Form Start-->
-                            <form id="inquiry_form" name="inquiry_form" class=" mt-20"
-                                method="post">
+                            <form id="inquiry_form" name="inquiry_form" class=" mt-20" method="post">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group mb-20">
@@ -160,21 +187,21 @@ include 'header.php'; ?>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                      <div class="form-group mb-20">
-                                            <input name="inquiry_date" class="form-control required date-picker" type="text"
-                                                placeholder="Date" aria-required="true">
+                                        <div class="form-group mb-20">
+                                            <input name="inquiry_date" class="form-control required date-picker"
+                                                type="text" placeholder="Date" aria-required="true">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group mb-20">
-                                        <img style="width:100px;height:50px"
-                                            src="verificationimage.php?<?php echo rand(0,9999);?>"
-                                            alt="verification image, type it in the box" width="50px" height="50px"
-                                            align="absbottom" />  
+                                            <img style="width:100px;height:50px"
+                                                src="verificationimage.php?<?php echo rand(0,9999);?>"
+                                                alt="verification image, type it in the box" width="50px" height="50px"
+                                                align="absbottom" />
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        
+
                                         <div class="form-group mb-20">
                                             <input name="verif_box" class="form-control required " type="text"
                                                 placeholder="code" aria-required="true">
@@ -183,23 +210,23 @@ include 'header.php'; ?>
                                     <div class="col-sm-12">
                                         <div class="form-group">
                                             <textarea placeholder="Enter Message" rows="3" class="form-control required"
-                                                name="inquiry_message" id="form_message" aria-required="true"></textarea>
+                                                name="inquiry_message" id="form_message"
+                                                aria-required="true"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="form-group mb-0 mt-10">
-                                            <div id="result_inquiry_form" ></div>
-                                            <img class="loader_inquiry_form img_loader" src="images/loader.gif"/>
+                                            <div id="result_inquiry_form"></div>
+                                            <img class="loader_inquiry_form img_loader" src="images/loader.gif" />
                                             <button type="submit"
-                                                class="btn_submit_inquiry_form btn btn-colored btn-default text-black btn-lg btn-block"
-                                            >Submit</button>
+                                                class="btn_submit_inquiry_form btn btn-colored btn-default text-black btn-lg btn-block">Submit</button>
                                         </div>
                                     </div>
                                 </div>
                             </form>
                             <!-- Application Form End-->
 
-                            
+
                         </div>
                     </div>
                 </div>
@@ -209,6 +236,93 @@ include 'header.php'; ?>
     <?
     }
     ?>
+
+    <section id="mission">
+        <div class="container-fluid pt-0 pb-0">
+            <div class="row equal-height">
+                <?
+                $sqlHomepdfPage =  $cn->selectdb('select page_name from tbl_page where page_id = 54');
+                if( $cn->numRows($sqlHomepdfPage) > 0 )
+                {
+                  $rowHomepdfPage = $cn->fetchAssoc($sqlHomepdfPage);
+                  extract($rowHomepdfPage);
+                ?>
+                <div class="col-sm-6 col-md-6 xs-pull-none bg-theme-colored wow fadeInLeft" data-wow-duration="1s"
+                    data-wow-delay="0.3s">
+                    <div class="pt-60 pb-40 pl-20 pr-20 p-md-30">
+                        <h2 class="title text-white text-uppercase line-bottom mt-0 mb-30"><?echo $page_name ?></h2>
+                        <?
+                        $sqlHomepdf = $cn->selectdb("SELECT homepdf_name, pdf_file FROM tbl_homepdf ORDER BY recordListingID ");
+                        if( $cn->numRows($sqlHomepdf) > 0 )
+                        {
+                            while($rowHomepdf = $cn->fetchAssoc($sqlHomepdf))
+                            {
+                                extract($rowHomepdf);
+                        ?>
+                        <div class="icon-box clearfix m-0 p-0 pb-10">
+
+                            <div class=" ml-sm-0">
+
+                                <h5 class="icon-box-title text-white mt-5 mb-10 letter-space-1">
+                                    <a href="<?echo $pdf_file?>" target="_BLANK" style="color:white">
+                                    <i
+                                        class="fa fa-arrow-circle-o-right text-theme-color-2 font-20 mr-10"></i>
+                                    <?echo $homepdf_name ?>
+
+                                    </a>
+                                </h5>
+                            </div>
+                        </div>
+                        <?
+                            }
+                        }
+                        ?>
+
+
+                    </div>
+                </div>
+                <?
+                }
+                ?>
+                <?
+                $sqlGovlinksPage =  $cn->selectdb('select page_name from tbl_page where page_id = 55');
+                if( $cn->numRows($sqlGovlinksPage) > 0 )
+                {
+                  $rowGovlinksPage = $cn->fetchAssoc($sqlGovlinksPage);
+                  extract($rowGovlinksPage);
+                ?>
+                <div class="col-sm-6 col-md-6 xs-pull-none  wow fadeInLeft border-3" data-wow-duration="1s"
+                    data-wow-delay="0.3s">
+                    <div class="pt-60 pb-40 pl-20 pr-20 p-md-30">
+                        <h2 class="title  text-uppercase line-bottom mt-0 mb-30"><?echo $page_name ?></h2>
+                        <?
+                        $sqlGovlinks = $cn->selectdb("SELECT link_url, image_title FROM tbl_govlink ORDER BY recordListingID ");
+                        if( $cn->numRows($sqlGovlinks) > 0 )
+                        {
+                            while($rowGovlinks = $cn->fetchAssoc($sqlGovlinks))
+                            {
+                                extract($rowGovlinks);
+                        ?>
+                        <div class="icon-box clearfix m-0 p-10 pb-10 col-md-6 ">
+                            <a href="<?echo $link_url?>" target="_BLANK" class=" list-img--govlinks__holder border-3">
+                                <img class="list-img list-img--govlinks" src="govlink/big_img/<?echo $image_title?>" />
+                            </a>
+                        </div>
+                        <?
+                            }
+                        }
+                        ?>
+                        
+                        
+                    </div>
+                </div>
+                <?
+                }
+                ?>
+
+            </div>
+        </div>
+    </section>
 
     <?
     $sqlHomeWhy = $cn->selectdb('select page_name, page_desc from tbl_page where page_id = 4');
@@ -231,7 +345,8 @@ include 'header.php'; ?>
                     </div>
                     <div class="col-sm-12 col-md-6 mb-sm-20 wow fadeInUp " style="padding-left: 25px;"
                         data-wow-duration="1s" data-wow-delay="0.5s">
-                        <h3 class="text-uppercase mt-15"><?echo $page_name ?>
+                        <h3 class="text-uppercase mt-15">
+                            <?echo $page_name ?>
                         </h3>
 
                         <?echo $page_desc ?>
@@ -251,12 +366,18 @@ include 'header.php'; ?>
 
                             <div class="col-xs-12 col-sm-6 col-md-6">
                                 <div class="icon-box p-0 mb-40">
-                                    <a href="javascript:void(0)" class="icon bg-theme-colored pull-left sm-pull-none flip mr-10">
-                                        <img class="home_why_extra_img" src="icon/big_img/<?echo $extra_icon?>" alt="<?echo $extra_icon?>">
+                                    <a href="javascript:void(0)"
+                                        class="icon bg-theme-colored pull-left sm-pull-none flip mr-10">
+                                        <img class="home_why_extra_img" src="icon/big_img/<?echo $extra_icon?>"
+                                            alt="<?echo $extra_icon?>">
                                     </a>
                                     <div class="icon-box-details ml-sm-0">
-                                        <h5 class="icon-box-title mt-15 letter-space-1 font-weight-600 mb-5"><?echo $title ?></h5>
-                                        <p class="text-gray"><?echo strip_tags($small_desc) ?></p>
+                                        <h5 class="icon-box-title mt-15 letter-space-1 font-weight-600 mb-5">
+                                            <?echo $title ?>
+                                        </h5>
+                                        <p class="text-gray">
+                                            <?echo strip_tags($small_desc) ?>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
@@ -264,9 +385,9 @@ include 'header.php'; ?>
                             <?                            
                               }
                             }
-                            ?>  
-                            
-                            
+                            ?>
+
+
                         </div>
 
 
@@ -280,6 +401,11 @@ include 'header.php'; ?>
     }
     ?>
 
+    <?php
+        $sql="SELECT P.product_name,P.description,C.cat_name,P.product_image,P.slug FROM tbl_product AS P, tbl_category AS C WHERE P.cat_id = C.cat_id LIMIT 3";
+        $result=$cn->selectdb($sql);
+        if($cn->numRows($result)>0){
+    ?>
     <!-- Section: courses -->
     <section>
         <div class="container pt-70 pb-40">
@@ -295,20 +421,25 @@ include 'header.php'; ?>
             <div class="row multi-row-clearfix">
                 <div class="col-md-12">
                     <div class="owl-carousel-3col owl-nav-top" data-dots="true">
+                        <?php
+                            while($row=$cn->fetchAssoc($result)){
+                        ?>
                         <div class="item">
                             <div class="project mb-30 border-2px">
                                 <div class="thumb">
-                                    <img class="img-fullwidth" alt="" src="images/project/p1.jpg">
+                                    <img class="img-fullwidth" alt=""
+                                        src="product/big_img/<?php echo $row['product_image'];?>">
                                     <div class="hover-link" style="left:35%;">
                                         <a class="btn btn-flat btn-dark btn-theme-colored btn-md pull-center font-10"
-                                            href="#"><span>Read More</span> </a>
+                                            href="course/<?php echo $row['slug'];?>"><span>Read More</span> </a>
                                     </div>
                                 </div>
                                 <div class="project-details p-15 pt-10 pb-10">
-                                    <h5 class="font-14 font-weight-500 mb-5">Commerce</h5>
-                                    <h4 class="font-weight-700 text-uppercase mt-0"><a href="#">BCOM</a></h4>
-                                    <p>A classroom is a learning space, a room in which both children and adults
-                                        learn.Parts of education. </p>
+                                    <h5 class="font-14 font-weight-500 mb-5"><?php echo $row['cat_name'];?></h5>
+                                    <h4 class="font-weight-700 text-uppercase mt-0"><a
+                                            href="course/<?php echo $row['slug'];?>"><?php echo $row['product_name'];?></a>
+                                    </h4>
+                                    <p><?php echo substr(strip_tags($row['description']),0,90);?>...</p>
                                     <ul class="list-inline project-conditions text-center m-0 p-10">
                                         <li class="current-fund"><strong>Time</strong> June 26</li>
                                         <li class="target-fund"><strong>Discount</strong>15%</li>
@@ -317,103 +448,46 @@ include 'header.php'; ?>
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="item">
-                            <div class="project mb-30 border-2px">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" alt="" src="images/project/p6.jpg">
-                                    <div class="hover-link" style="left:35%;">
-                                        <a class="btn btn-flat btn-dark btn-theme-colored btn-md pull-center font-10"
-                                            href="#"><span>Read More</span> </a>
-                                    </div>
-                                </div>
-                                <div class="project-details p-15 pt-10 pb-10">
-                                    <h5 class="font-14 font-weight-500 mb-5">Management</h5>
-                                    <h4 class="font-weight-700 text-uppercase mt-0"><a href="#">BBA</a></h4>
-                                    <p>A classroom is a learning space, a room in which both children and adults
-                                        learn.Parts of education. </p>
-                                    <ul class="list-inline project-conditions text-center m-0 p-10">
-                                        <li class="current-fund"><strong>Time</strong> June 26</li>
-                                        <li class="target-fund"><strong>Discount</strong>15%</li>
-                                        <li class="remaining-days"><strong>Duration</strong>6 Months</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="item">
-                            <div class="project mb-30 border-2px">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" alt="" src="images/project/p4.jpg">
-                                    <div class="hover-link" style="left:35%;">
-                                        <a class="btn btn-flat btn-dark btn-theme-colored btn-md pull-center font-10"
-                                            href="#"><span>Read More</span> </a>
-                                    </div>
-                                </div>
-                                <div class="project-details p-15 pt-10 pb-10">
-                                    <h5 class="font-14 font-weight-500 mb-5">Management</h5>
-                                    <h4 class="font-weight-700 text-uppercase mt-0"><a href="#">MBA</a></h4>
-                                    <p>A classroom is a learning space, a room in which both children and adults
-                                        learn.Parts of education. </p>
-                                    <ul class="list-inline project-conditions text-center m-0 p-10">
-                                        <li class="current-fund"><strong>Time</strong> June 26</li>
-                                        <li class="target-fund"><strong>Discount</strong>15%</li>
-                                        <li class="remaining-days"><strong>Duration</strong>6 Months</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        <?php
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
+    <?php
+        }
+    ?>
+    <?php
+        $sql="SELECT title,small_desc,extra_desc FROM tbl_addmore WHERE page_id=35";
+        $result=$cn->selectdb($sql);
+        if($cn->numRows($result)>0){
+    ?>
     <!-- Divider: Funfact -->
     <section class="divider parallax layer-overlay" data-bg-img="images/bg/bg6.jpg" data-parallax-ratio="0.7">
         <div class="container pt-70 pb-60">
             <div class="row">
+                <?php
+                    while($row=$cn->fetchAssoc($result)){
+                ?>
                 <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
                     <div class="funfact text-center">
-                        <i class="fa fa-users mt-5 text-white"></i>
-                        <h2 data-animation-duration="2000" data-value="50"
+                        <i class="<?php echo $row['extra_desc'];?> mt-5 text-white"></i>
+                        <h2 data-animation-duration="2000" data-value="<?php echo strip_tags($row['small_desc']);?>"
                             class="animate-number text-white mt-0 font-38 font-weight-500">0</h2>
-                        <h4 class="text-white text-uppercase">Professors</h4>
+                        <h4 class="text-white text-uppercase"><?php echo $row['title'];?></h4>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-                    <div class="funfact text-center">
-                        <i class="fa fa-book mt-5 text-white"></i>
-                        <h2 data-animation-duration="2000" data-value="75"
-                            class="animate-number text-white mt-0 font-38 font-weight-500">0</h2>
-                        <h4 class="text-white text-uppercase">Class Types</h4>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-                    <div class="funfact text-center">
-                        <i class="fa fa-home mt-5 text-white"></i>
-                        <h2 data-animation-duration="2000" data-value="204"
-                            class="animate-number text-white mt-0 font-38 font-weight-500">0</h2>
-                        <h4 class="text-white text-uppercase">Class Rooms</h4>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50">
-                    <div class="funfact text-center">
-                        <i class="fa  fa-graduation-cap mt-5 text-white"></i>
-                        <h2 data-animation-duration="2000" data-value="2324"
-                            class="animate-number text-white mt-0 font-38 font-weight-500">0</h2>
-                        <h4 class="text-white text-uppercase">Students</h4>
-                    </div>
-                </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
     </section>
-
+    <?php
+        }
+    ?>
     <!-- Section: Teachers -->
     <section id="teachers">
         <div class="container pt-70 pb-70">
@@ -791,7 +865,11 @@ include 'header.php'; ?>
         </div>
 </div>
 </section>
-
+<?php
+    $sql="SELECT blog_name,slug,bdate,blog_image,description FROM tbl_blog ORDER BY recordListingID LIMIT 3";
+    $result = $cn->selectdb($sql);
+    if($cn->numRows($result)>0){
+?>
 <!-- Section: Blog -->
 <section id="blog">
     <div class="container pt-70">
@@ -807,17 +885,24 @@ include 'header.php'; ?>
         <div class="row">
             <div class="col-md-12">
                 <div class="owl-carousel-3col owl-nav-top mb-sm-0" data-dots="true">
+                    <?php
+                    while($row=$cn->fetchAssoc($result)){
+                ?>
                     <div class="item">
                         <article class="post clearfix maxwidth600 mb-sm-30 wow fadeInRight" data-wow-delay=".2s">
                             <div class="entry-header">
-                                <div class="post-thumb thumb"> <img src="images/blog/1.jpg" alt=""
-                                        class="img-responsive img-fullwidth"> </div>
+                                <div class="post-thumb thumb">
+                                    <img src="blog/big_img/<?php echo $row['blog_image'];?>" alt=""
+                                        class="img-responsive img-fullwidth">
+                                </div>
                                 <div class="entry-meta meta-absolute text-center pl-10 pr-10">
                                     <div class="display-table">
                                         <div class="display-table-cell">
                                             <ul>
                                                 <li><a class="text-white" href="#"><i
-                                                            class="fa fa-calendar-o mt-0 pt-0"></i> 25 <br> May 2020</a>
+                                                            class="fa fa-calendar-o mt-0 pt-0"></i>
+                                                        <?php echo date('d', strtotime($row['bdate']));?> <br>
+                                                        <?php echo date('F Y', strtotime($row['bdate']));?></a>
                                                 </li>
                                                 <!-- <li><a class="text-white" href="#"><i class="fa fa-thumbs-o-up mt-20"></i> 250 <br> Likes</a></li> -->
                                             </ul>
@@ -826,76 +911,28 @@ include 'header.php'; ?>
                                 </div>
                             </div>
                             <div class="entry-content border-1px p-20">
-                                <h4 class="entry-title mt-0 pt-0"><a href="#">Exam Grade Booster</a></h4>
-                                <p class="text-left mb-20 mt-5 font-13">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read
-                                    more</a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="post clearfix maxwidth600 mb-sm-30 wow fadeInRight" data-wow-delay=".4s">
-                            <div class="entry-header">
-                                <div class="post-thumb thumb"> <img src="images/blog/2.jpg" alt=""
-                                        class="img-responsive img-fullwidth"> </div>
-                                <div class="entry-meta meta-absolute text-center pl-10 pr-10">
-                                    <div class="display-table">
-                                        <div class="display-table-cell">
-                                            <ul>
-                                                <li><a class="text-white" href="#"><i
-                                                            class="fa fa-calendar-o mt-0 pt-0"></i> 25 <br> May 2020</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="entry-content border-1px p-20">
-                                <h4 class="entry-title mt-0 pt-0"><a href="#">Study To Success</a></h4>
-                                <p class="text-left mb-20 mt-5 font-13">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left" href="#">Read
-                                    more</a>
-                                <div class="clearfix"></div>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="item">
-                        <article class="post clearfix maxwidth600 mb-sm-30 wow fadeInRight" data-wow-delay=".6s">
-                            <div class="entry-header">
-                                <div class="post-thumb thumb"> <img src="images/blog/3.jpg" alt=""
-                                        class="img-responsive img-fullwidth"> </div>
-                                <div class="entry-meta meta-absolute text-center pl-10 pr-10">
-                                    <div class="display-table">
-                                        <div class="display-table-cell">
-                                            <ul>
-                                                <li><a class="text-white" href="#"><i
-                                                            class="fa fa-calendar-o mt-0 pt-0"></i> 25 <br> May 2020</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="entry-content border-1px p-20">
-                                <h4 class="entry-title mt-0 pt-0"><a href="#">The College Info Geek Podcast</a></h4>
-                                <p class="text-left mb-20 mt-5 font-13">Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                <h4 class="entry-title mt-0 pt-0"><a
+                                        href="blog-detail/<?php echo $row['slug'];?>"><?php echo $row['blog_name'];?></a>
+                                </h4>
+                                <p class="text-left mb-20 mt-5 font-13">
+                                    <?php echo substr(strip_tags($row['description']),0,100);?>...</p>
                                 <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left"
-                                    href="blog-single-left-sidebar.html">Read more</a>
+                                    href="blog-detail/<?php echo $row['slug'];?>">Read more</a>
                                 <div class="clearfix"></div>
                             </div>
                         </article>
                     </div>
-
+                    <?php
+                    }
+                ?>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+<?php
+    }
+?>
 
 
 </div>
@@ -906,3 +943,45 @@ include 'header.php'; ?>
 <!--FOR Forms-->
 
 <script src="js/forms.js"></script>
+
+<script src="js/jquery.marquee.js"></script>
+
+<script>
+$(function() {
+    $('.marquee').marquee({
+
+        //If you wish to always animate using jQuery
+        allowCss3Support: true,
+
+        //works when allowCss3Support is set to true - for full list see http://www.w3.org/TR/2013/WD-css3-transitions-20131119/#transition-timing-function
+        css3easing: 'linear',
+
+        //requires jQuery easing plugin. Default is 'linear'
+        easing: 'linear',
+
+        //pause time before the next animation turn in milliseconds
+        delayBeforeStart: 2000,
+        //'left', 'right', 'up' or 'down'
+        direction: 'left',
+
+        //true or false - should the marquee be duplicated to show an effect of continues flow
+        duplicated: true,
+
+        //speed in milliseconds of the marquee in milliseconds
+        duration: 10000,
+
+        //gap in pixels between the tickers
+        gap: 20,
+
+        //on cycle pause the marquee
+        pauseOnCycle: false,
+
+        //on hover pause the marquee - using jQuery plugin https://github.com/tobia/Pause
+        pauseOnHover: true,
+
+        //the marquee is visible initially positioned next to the border towards it will be moving
+        startVisible: true
+
+    });
+});
+</script>

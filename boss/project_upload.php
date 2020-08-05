@@ -158,6 +158,24 @@ $con->connectdb();
 			
 			$con->insertdb("insert into tbl_project_category(cat_parent_id,cat_name,cat_image,meta_tag_title, meta_tag_description, meta_tag_keywords,slug) 
 			values(".$cat_parent_id.",'".$cat_name."','".$catImage."', '".$meta_tag_title."', '".$meta_tag_description."', '".$meta_tag_keywords."', '".$slug."')");
+
+
+			//insert in tbl_month table
+			foreach($_POST['month'] as $i => $item) 
+			{
+				// echo 'in';
+				if($_POST['month'][$i]!='')
+				{
+					$month= $_POST['month'][$i];
+					
+					
+					
+					$cn->insertdb("insert into tbl_month values(NULL,'".$supplier_id."','".$month."')");
+	
+					
+				}
+			}
+
 			header("location: projectCatView.php?page=$page");
 	}
 	   

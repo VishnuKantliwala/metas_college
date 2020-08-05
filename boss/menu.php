@@ -44,6 +44,72 @@
                             </li>
 
                             <li>
+                                <a href="govlinkView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Government Links </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="homepdfView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Home PDFs </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="examView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Exam PDFs </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="newsView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Marquee </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="affiliationsView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Affiliations </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="recruiterView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Recruiters </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="projectCatView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Calendar </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="calendarCatView.php"> Category </a></li>
+                                    <li><a href="calendarView.php"> Entries </a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="alumniView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Alumni </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="alumniView.php"> Alumni </a></li>
+                                    <li><a href="alumniRequestView.php"> Registration </a></li>
+                                </ul>
+                            </li>
+
+                            <li>
                                 <a href="projectCatView.php">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Addmission </span>
@@ -52,6 +118,18 @@
                                 <ul class="nav-second-level" aria-expanded="false">
                                     <li><a href="applicationBlogView.php"> Application for UG / PG / PHD </a></li>
                                     <li><a href="cancellationPolicy.php"> Cancellation Policy </a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="eventCatView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Activities / Events </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="eventCatView.php"> Category </a></li>
+                                    <li><a href="eventView.php"> Activities / Events </a></li>
                                 </ul>
                             </li>
 
