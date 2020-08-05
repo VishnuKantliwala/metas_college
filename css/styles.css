@@ -197,6 +197,10 @@
     height: 132px !important;   
 }
 
+.list-img--affiliation {
+    height: 100px !important;   
+}
+
 .list-desc {
     overflow:hidden;
     text-overflow: ellipsis;

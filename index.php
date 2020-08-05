@@ -250,7 +250,9 @@ include 'header.php'; ?>
                 <div class="col-sm-6 col-md-6 xs-pull-none bg-theme-colored wow fadeInLeft" data-wow-duration="1s"
                     data-wow-delay="0.3s">
                     <div class="pt-60 pb-40 pl-20 pr-20 p-md-30">
-                        <h2 class="title text-white text-uppercase line-bottom mt-0 mb-30"><?echo $page_name ?></h2>
+                        <h2 class="title text-white text-uppercase line-bottom mt-0 mb-30">
+                            <?echo $page_name ?>
+                        </h2>
                         <?
                         $sqlHomepdf = $cn->selectdb("SELECT homepdf_name, pdf_file FROM tbl_homepdf ORDER BY recordListingID ");
                         if( $cn->numRows($sqlHomepdf) > 0 )
@@ -265,9 +267,8 @@ include 'header.php'; ?>
 
                                 <h5 class="icon-box-title text-white mt-5 mb-10 letter-space-1">
                                     <a href="<?echo $pdf_file?>" target="_BLANK" style="color:white">
-                                    <i
-                                        class="fa fa-arrow-circle-o-right text-theme-color-2 font-20 mr-10"></i>
-                                    <?echo $homepdf_name ?>
+                                        <i class="fa fa-arrow-circle-o-right text-theme-color-2 font-20 mr-10"></i>
+                                        <?echo $homepdf_name ?>
 
                                     </a>
                                 </h5>
@@ -294,7 +295,9 @@ include 'header.php'; ?>
                 <div class="col-sm-6 col-md-6 xs-pull-none  wow fadeInLeft border-3" data-wow-duration="1s"
                     data-wow-delay="0.3s">
                     <div class="pt-60 pb-40 pl-20 pr-20 p-md-30">
-                        <h2 class="title  text-uppercase line-bottom mt-0 mb-30"><?echo $page_name ?></h2>
+                        <h2 class="title  text-uppercase line-bottom mt-0 mb-30">
+                            <?echo $page_name ?>
+                        </h2>
                         <?
                         $sqlGovlinks = $cn->selectdb("SELECT link_url, image_title FROM tbl_govlink ORDER BY recordListingID ");
                         if( $cn->numRows($sqlGovlinks) > 0 )
@@ -312,8 +315,8 @@ include 'header.php'; ?>
                             }
                         }
                         ?>
-                        
-                        
+
+
                     </div>
                 </div>
                 <?
@@ -934,6 +937,46 @@ include 'header.php'; ?>
     }
 ?>
 
+
+
+
+<!-- Divider: Clients -->
+<section class="clients bg-theme-colored">
+    <div class="container pt-10 pb-10 pb-sm-0 pt-sm-0">
+        
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 text-center">
+                <h2 class="mt-0 line-height-1 text-uppercase text-white">Affiliations
+                </h2>
+                <hr/>
+            </div>
+            <div class="col-md-12">
+                <!-- Section: Clients -->
+                <div class="owl-carousel-6col transparent text-center owl-nav-top">
+                    <?
+                    $sqlAffiliations = $cn->selectdb("select affiliations_image, affiliations_name from tbl_affiliations order by recordListingID");
+                    if( $cn->numRows($sqlAffiliations) > 0 )
+                    {
+                        while($rowAffiliations = $cn->fetchAssoc($sqlAffiliations))
+                        {
+                            extract($rowAffiliations);
+                    ?>
+                    <div class="item"> 
+                        <a href="affiliations-and-accreditation">
+                            <img class="list-img list-img--affiliation" src="./affiliations/big_img/<?echo $affiliations_image?>" alt="<?echo $affiliations_name?>">
+                        </a>
+                        <p class="text-white"><?echo $affiliations_name?></p>
+                    </div>
+                    <?
+                        }
+                    }
+                    ?>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 </div>
 <!-- end main-content -->
