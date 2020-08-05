@@ -272,6 +272,12 @@
         width: 70%;
         height: 140px;
     }
+
+    .list-img--affiliation {
+        height: 200px !important;   
+    }
+
+
     .recruiter-name-logo {
         
         width: 70%;
