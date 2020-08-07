@@ -204,7 +204,7 @@ function generate_menu($parent)
                                     <input type="hidden" name="cat_id" id="cat_id" value="<?php echo $row[3]; ?>" />
 
 
-                                    <div class="form-group">
+                                    <div class="form-group" style="display:none">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Category List</label>
                                         <div class="col-sm-12">
                                             <div class="panel-body">
@@ -236,7 +236,7 @@ function generate_menu($parent)
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                    <div class="form-group" style="display:none">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Overview</label>
                                         <div class="col-sm-10">
                                             <textarea class="ckeditor" cols="80" id="description" name="description" rows="10"><? echo $row[2];?></textarea>

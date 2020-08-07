@@ -25,6 +25,14 @@ $.ajax({
     success: function(html) {
         
         $("#results").append(html);
+
+        // For gallery and gallery category
+        if(file==="getgallery.php" || file === "getgallerycategory.php")
+        {
+            $('a[data-lightbox-gallery]').nivoLightbox({
+                effect: 'fadeScale'
+            });
+        }
     
     $('#loader_image').hide();
     // alert($.trim(html)+"");

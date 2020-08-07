@@ -74,6 +74,18 @@ $link_url="../".$con->setdomain();
 			// Multiple images
 			//-------------------
 			$images_name = createMultiImage('image_title', "../eventF/");	
+
+			//-----------------------------
+			//pdf
+			//-----------------------------
+			
+			$pdf_file = createPDF('event_file', "../event_pdf/");
+			
+			//--------------------		
+			//end of pdf
+			//--------------------
+
+
 			
 		$catID = '';
 		//get multiple value of radio (multiple categories)
@@ -92,7 +104,8 @@ $link_url="../".$con->setdomain();
 							`meta_tag_keywords`,
 							`slug`,
                             `event_date`,
-							`multi_images`
+							`multi_images`,
+							`pdf_file`
                             )
 							VALUES (
 							'".$event_title."',
@@ -104,7 +117,8 @@ $link_url="../".$con->setdomain();
 							'".$meta_tag_keywords."', 
 							'".$slug."',
                             '".$event_date."',
-							'".$images_name."'
+							'".$images_name."',
+							'".$pdf_file."'
                             );");
 					
 			
@@ -159,6 +173,7 @@ $link_url="../".$con->setdomain();
 			   } //foreach
 			   
 			   $frontimg2=$_POST['frontimg2'];
+			   $frontimgpdf2=$_POST['frontimgpdf2'];
    
 			   // single image
 			   if($_FILES["frontimg"]['error'] > 0)// it means no new image selected insert previous one......
@@ -204,6 +219,26 @@ $link_url="../".$con->setdomain();
 			   //-----------------				
 			   //end of multiple images
 			   //--------------------
+
+			   //------------------------
+			//pdf
+			//------------------------
+			
+			if($_FILES["event_file"]["error"] <= 0)
+			{
+			
+				@unlink("../event_pdf/". $frontimgpdf2);
+
+				$pdf_file = createPDF('event_file',"../event_pdf/");
+
+				$con->insertdb("UPDATE `tbl_event` SET pdf_file='".$pdf_file."'  where event_id='".$event_id."'");
+			}
+
+				 
+		//-----------------				
+		//end of pdf
+		//--------------------
+		
    
 			   header("location:eventView.php?page=$page");
 			   
@@ -240,6 +275,22 @@ if(isset($_GET["ProImage"]))
 
 	}
 	$con->selectdb("update tbl_event set image_name='' where event_id = '".$id."'");
+	header("location: event_up.php?event_id=".$id."&page=".$page);
+
+
+}	
+
+if(isset($_GET["PDF"]))
+	{
+	//print_r($_POST);die;
+	$id= $_GET['id'];
+	$records=$con->selectdb("SELECT * FROM tbl_event where event_id=".$id."");
+	while($row=mysqli_fetch_array($records))
+	{
+	  @unlink('../event_pdf/'.$row['pdf_file']);
+
+	}
+	$con->selectdb("update tbl_event set pdf_file='' where event_id = '".$id."'");
 	header("location: event_up.php?event_id=".$id."&page=".$page);
 
 

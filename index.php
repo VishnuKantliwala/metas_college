@@ -16,8 +16,30 @@ include 'header.php'; ?>
             <div id="overlay"></div>
             <video autoplay muted loop
                 style="margin: auto; position: absolute; z-index: -1; top: 0%; left: 0%; width: 1351px; height: auto;">
+
+                <?
+                $sqlVideoSlider = $cn->selectdb("select video_file from tbl_video2 where video_id = 1");
+                if( $cn->numRows($sqlVideoSlider) > 0 )
+                {
+                    $rowVideoSlider = $cn->fetchAssoc($sqlVideoSlider);
+                    extract($rowVideoSlider);
+                    ?>
+                    <!-- <source src="video.mp4" type="video/mp4"/> -->
+                    <source src="./home_video/<?echo $video_file?>" type="video/mp4"/>    
+                    <?
+                }
+                else
+                {
+                ?>
                 <source src="video/MetasVideo.mp4" type="video/mp4">
-                <source src="video/MetasVideo.webm" type="video/webm"></video>
+                <source src="video/MetasVideo.webm" type="video/webm">
+                <?
+                }
+                ?>
+
+
+                
+            </video>
         </div>
 
         <div class="display-table">
@@ -58,7 +80,7 @@ include 'header.php'; ?>
                     <div
                         class="col-sm-12 col-md-3 pl-0 pl-sm-15 pr-0 pr-sm-15 sm-height-auto mt-sm-0 wow fadeInLeft animation-delay1">
                         <div class="sm-height-auto bg-theme-colored">
-                            <div class="text-center pt-30 pb-30">
+                            <div class="text-center pt-30 pb-10">
                                 <img src="icon/big_img/<?echo $extra_icon?>" alt="<?echo $title ?>"
                                     class="slider_icons" />
                                 <h4 class="text-uppercase mt-20"><a href="javascript:void(0)" class="text-white">
@@ -358,6 +380,7 @@ include 'header.php'; ?>
 
                         <div class="row">
                             <?
+                            /*
                               $sqlHomeWhyMore = $cn->selectdb('SELECT title, small_desc, extra_icon from tbl_addmore where page_id = 4');
                               if( $cn->numRows($sqlHomeWhyMore) > 0 )
                               {
@@ -388,6 +411,7 @@ include 'header.php'; ?>
                             <?                            
                               }
                             }
+                            */
                             ?>
 
 
@@ -585,113 +609,86 @@ include 'header.php'; ?>
         </div>
     </section>
 
+    <?
+    $sqlHomeEventsPage = $cn->selectdb('select page_name, page_desc, image from tbl_page where page_id = 59');
+    if( $cn->numRows($sqlHomeEventsPage) > 0 )
+    {
+      $rowHomeEventsPage = $cn->fetchAssoc($sqlHomeEventsPage);
+      extract($rowHomeEventsPage);
+    
+    ?>
     <!-- Section: events -->
+
     <section id="events" class="divider parallax layer-overlay overlay-dark-8" data-stellar-background-ratio="0.5"
-        data-bg-img="images/bg/bg1.jpg">
+        <?
+            $src = $image =="" ? "images/bg/bg1.jpg" : "page/big_img/".$image;
+        ?>
+        data-bg-img="<?echo $src?>"
+        
+        >
         <div class="container pt-70 pb-40">
             <div class="section-title mb-30">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 text-center">
-                        <h2 class="mt-0 line-height-1 text-center mb-10 text-white text-uppercase">Upcoming Events</h2>
-                        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br>
-                            voluptatem obcaecati!</p>
+                        <h2 class="mt-0 line-height-1 text-center mb-10 text-white text-uppercase"><?echo $page_name ?></h2>
+                        <p class="text-white"><?echo strip_tags($page_desc) ?></p>
                     </div>
                 </div>
             </div>
             <div class="section-content">
                 <div class="row">
+                    <?
+                    $sqlHomeEvent = $cn->selectdb("SELECT * FROM tbl_event where event_date > CURDATE()  ORDER BY recordListingID");
+                    if( $cn->numRows($sqlHomeEvent) > 0 )
+                    {
+                        while($rowHomeEvent = $cn->fetchAssoc($sqlHomeEvent))
+                        {
+                            extract($rowHomeEvent);
+                            $date = date("M d, Y",strtotime($event_date));
+                            $href = "activity-details/".urlencode($slug);
+
+                    ?>
                     <div class="col-xs-12 col-sm-6 col-md-6 mb-30 wow fadeInRight" data-wow-duration="1s"
                         data-wow-delay="0.5s">
                         <div class="pricing table-horizontal maxwidth400">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="thumb">
-                                        <img class="img-fullwidth mb-sm-0" src="images/about/as7.jpg" alt="">
+                                        <img class="img-fullwidth list-img list-img--activity" alt="<?echo $event_title ?>" src="event/big_img/<?echo $image_name?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6 p-30 pl-sm-50">
-                                    <h4 class="mt-0 mb-5"><a href="#" class="text-white">Upcoming Events Title</a></h4>
+                                    <h4 class="mt-0 mb-5"><a href="<?echo $href?>" class="text-white list-title"><?echo $event_title ?></a></h4>
                                     <ul class="list-inline mb-5 text-white">
-                                        <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>
-                                        <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>
+                                        <li class="pr-0"><i class="fa fa-calendar mr-5"></i> <?echo $date ?> |</li>
+                                        
                                     </ul>
-                                    <p class="mb-15 mt-15 text-white">Lorem ipsum dolor sit amet, consectetur adi
-                                        isicing elit. Quas eveniet, nemo dicta. Ullam nam.</p>
-                                    <a class="text-white font-weight-600" href="#">Read More →</a>
+                                    <p class="mb-15 mt-15 text-white list-desc list-desc--activity" ><?echo substr(strip_tags($description),0,400);?>...</p>
+                                    <a class="text-white font-weight-600" href="<?echo $href?>">Read More →</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 mb-30 wow fadeInRight" data-wow-duration="1s"
-                        data-wow-delay="0.5s">
-                        <div class="pricing table-horizontal maxwidth400">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="thumb">
-                                        <img class="img-fullwidth mb-sm-0" src="images/about/as8.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 p-30 pl-sm-50">
-                                    <h4 class="mt-0 mb-5"><a href="#" class="text-white">Upcoming Events Title</a></h4>
-                                    <ul class="list-inline mb-5 text-white">
-                                        <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>
-                                        <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>
-                                    </ul>
-                                    <p class="mb-15 mt-15 text-white">Lorem ipsum dolor sit amet, consectetur adi
-                                        isicing elit. Quas eveniet, nemo dicta. Ullam nam.</p>
-                                    <a class="text-white font-weight-600" href="#">Read More →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 mb-30 wow fadeInRight" data-wow-duration="1s"
-                        data-wow-delay="0.5s">
-                        <div class="pricing table-horizontal maxwidth400">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="thumb">
-                                        <img class="img-fullwidth mb-sm-0" src="images/about/as9.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 p-30 pl-sm-50">
-                                    <h4 class="mt-0 mb-5"><a href="#" class="text-white">Upcoming Events Title</a></h4>
-                                    <ul class="list-inline mb-5 text-white">
-                                        <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>
-                                        <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>
-                                    </ul>
-                                    <p class="mb-15 mt-15 text-white">Lorem ipsum dolor sit amet, consectetur adi
-                                        isicing elit. Quas eveniet, nemo dicta. Ullam nam.</p>
-                                    <a class="text-white font-weight-600" href="#">Read More →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 mb-30 wow fadeInRight" data-wow-duration="1s"
-                        data-wow-delay="0.5s">
-                        <div class="pricing table-horizontal maxwidth400">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="thumb">
-                                        <img class="img-fullwidth mb-sm-0" src="images/about/as10.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 p-30 pl-sm-50">
-                                    <h4 class="mt-0 mb-5"><a href="#" class="text-white">Upcoming Events Title</a></h4>
-                                    <ul class="list-inline mb-5 text-white">
-                                        <li class="pr-0"><i class="fa fa-calendar mr-5"></i> June 26, 2016 |</li>
-                                        <li class="pl-5"><i class="fa fa-map-marker mr-5"></i>New York</li>
-                                    </ul>
-                                    <p class="mb-15 mt-15 text-white">Lorem ipsum dolor sit amet, consectetur adi
-                                        isicing elit. Quas eveniet, nemo dicta. Ullam nam.</p>
-                                    <a class="text-white font-weight-600" href="#">Read More →</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
+                    <?
+                        }
+                    }
+                    else
+                    {
+                    ?>
+                    <div class="col-md-12 text-center"><h4 class="mt-0 line-height-1 text-center mb-10 text-white text-uppercase">No upcoming events.</h4></div>
+                    <?
+                    }
+                    ?>
+                    
+                    
                 </div>
             </div>
         </div>
     </section>
+    <?
+    }
+    ?>
 
     <!-- Gallery Grid 3 -->
     <section id="gallery">
@@ -814,60 +811,7 @@ include 'header.php'; ?>
         </div>
     </section>
 
-    <!-- Section: Client Say -->
-    <section data-background-ratio="0.5" data-bg-img="images/bg/addmission.png">
-        <div class="container pt-60 pb-60">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2 class="ml-25 mt-25 pb-0  text-center text-white" style="margin-left:150px;">Spring Term 2020
-                        Admission for All Standard</h2>
-
-                    <div class="row pt-30">
-                        <div class="col-md-2 col-md-offset-3">
-                            <div class="funfact text-center">
-                                <h2 style="border:3px solid;border-radius: 30%;" data-animation-duration="2000"
-                                    data-value="50" class="animate-number text-white mt-0 font-38 font-weight-500">
-                                    <span>0</span></h2>
-                                <h4 class="text-white text-uppercase">Days</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="funfact text-center">
-                                <h2 style="border:3px solid;border-radius: 30%;" data-animation-duration="2000"
-                                    data-value="15" class="animate-number text-white mt-0 font-38 font-weight-500">0
-                                </h2>
-                                <h4 class="text-white text-uppercase">Hours</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="funfact text-center">
-                                <h2 style="border:3px solid;border-radius: 30%;" data-animation-duration="2000"
-                                    data-value="35" class="animate-number text-white mt-0 font-38 font-weight-500">0
-                                </h2>
-                                <h4 class="text-white text-uppercase">Minute</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="funfact text-center">
-                                <h2 style="border:3px solid;border-radius: 30%;" data-animation-duration="2000"
-                                    data-value="50" class="animate-number text-white mt-0 font-38 font-weight-500">0
-                                </h2>
-                                <h4 class="text-white text-uppercase">Second</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-md-offset-3" style="padding-top: 40px;">
-                            <a style="background-color: #2a094d;"
-                                class="btn btn-flat btn-dark btn-theme-colored btn-lg pull-left " href="#">Addmission
-                                Now</a>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-</div>
-</section>
+    
 <?php
     $sql="SELECT blog_name,slug,bdate,blog_image,description FROM tbl_blog ORDER BY recordListingID LIMIT 3";
     $result = $cn->selectdb($sql);
@@ -878,11 +822,21 @@ include 'header.php'; ?>
     <div class="container pt-70">
         <div class="section-title text-center">
             <div class="row">
+                <?
+                $sqlBlogsPage = $cn->selectdb("SELECT page_name, page_desc FROM tbl_page where page_id = 57");
+                if( $cn->numRows($sqlBlogsPage) > 0 )
+                {
+                    $rowBlogsPage = $cn->fetchAssoc($sqlBlogsPage);
+                    extract($rowBlogsPage);
+                ?>
                 <div class="col-md-8 col-md-offset-2">
-                    <h2 class="mt-0 line-height-1 text-uppercase">Recent <span class="text-theme-color-2"> News</span>
-                    </h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p>
+                    <h2 class="mt-0 line-height-1 text-uppercase"><a href="news"><?echo $page_name ?>
+                    </h2></a>
+                    <p><?echo strip_tags($page_desc) ?></p>
                 </div>
+                <?
+                }
+                ?>
             </div>
         </div>
         <div class="row">
@@ -896,7 +850,7 @@ include 'header.php'; ?>
                             <div class="entry-header">
                                 <div class="post-thumb thumb">
                                     <img src="blog/big_img/<?php echo $row['blog_image'];?>" alt=""
-                                        class="img-responsive img-fullwidth">
+                                        class="img-responsive img-fullwidth list-img list-img--news">
                                 </div>
                                 <div class="entry-meta meta-absolute text-center pl-10 pr-10">
                                     <div class="display-table">
@@ -914,11 +868,11 @@ include 'header.php'; ?>
                                 </div>
                             </div>
                             <div class="entry-content border-1px p-20">
-                                <h4 class="entry-title mt-0 pt-0"><a
+                                <h4 class="entry-title mt-0 pt-0"><a class=" list-title list-title--news"
                                         href="blog-detail/<?php echo $row['slug'];?>"><?php echo $row['blog_name'];?></a>
                                 </h4>
-                                <p class="text-left mb-20 mt-5 font-13">
-                                    <?php echo substr(strip_tags($row['description']),0,100);?>...</p>
+                                <p class="text-left mb-20 mt-5 font-13  list-desc list-desc--homenews">
+                                    <?php echo substr(strip_tags($row['description']),0,200);?>...</p>
                                 <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left"
                                     href="blog-detail/<?php echo $row['slug'];?>">Read more</a>
                                 <div class="clearfix"></div>

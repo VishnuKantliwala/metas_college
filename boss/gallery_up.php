@@ -240,8 +240,8 @@ $finalarray= array_filter($arraycat_id);
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Image</label>
+                                    <div class="form-group" style="display:none">
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Image </label>
                                         <div class="col-sm-4">
                                             <input type="file" id="frontimg" name="frontimg" class="dropify" data-default-file="<? if($row[4]!=''){echo "../gallery/".$row[4];}?>"/>
                                             <? if($row[4]!=''){?>
@@ -253,7 +253,7 @@ $finalarray= array_filter($arraycat_id);
                                     
                                     
                                     <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">Multiple Images:</label>
+                                        <label for="inputEmail3" class="col-sm-2 control-label">Multiple Images:  (37 : 27)</label>
                                         <input type="hidden" class="form-control" id="frontimg1" name="frontimg1" placeholder="Multiple Images" value="<? echo $row['multi_images']; ?>">
 
                                         <div class="col-sm-4">

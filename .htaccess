@@ -24,10 +24,12 @@ RewriteRule ^course-category/(.*)/? course_categories.php?cid=$1 [L]
 RewriteRule ^institute-details/? institute-details.php [L]
 RewriteRule ^directors-message/? director-msg.php [L]
 RewriteRule ^affiliations-and-accreditation/? affiliations.php [L]
+RewriteRule ^iqac-members/? iqac-members.php [L]
+RewriteRule ^iqac-reports/? iqac-reports.php [L]
 
 RewriteRule ^education-policy/? education-policy.php [L]
 RewriteRule ^students-corner/? students-corner.php [L]
-RewriteRule ^students-research/? students-category.php [L]
+
 
 RewriteRule ^application-for-ug-pg-phd/(.*)/? application.php?page=$1 [L]
 RewriteRule ^application-blog/(.*)/? application_blog.php?bid=$1 [L]
@@ -43,23 +45,32 @@ RewriteRule ^activity-details/(.*)/? activity-detail.php?aid=$1 [L]
 RewriteRule ^alumni-list/(.*)/? alumni-detail.php?aid=$1 [L]
 RewriteRule ^alumni-list/? alumni.php [L]
 
+RewriteRule ^news/(.*)/? news-detail.php?nid=$1 [L]
+RewriteRule ^news$/? news.php [L]
+
+# RewriteRule ^news/(.*)/? news-detail.php?nid=$1 [L]
+# RewriteRule ^news/? news.php [L]
+
 RewriteRule ^alumni-registration/? alumni-registration.php [L]
 
 # Student corner
 RewriteRule ^memorandum-of-understanding/? mou.php [L]
 RewriteRule ^recruiters/? recruiters.php [L]
-RewriteRule ^students-wise-placement-information/? student-placements.php [L]
+RewriteRule ^students-research/? student-randd-list.php [L]
+RewriteRule ^student-wise-placement-information/? student-placements.php [L]
 RewriteRule ^examination/? examination.php [L]
+
 
 
 # R & D
 RewriteRule ^research-and-development-cell/? randd-cell.php [L]
 RewriteRule ^research-and-development/? randd-list.php [L]
 
-RewriteRule ^publications/? publications.php [L]
-RewriteRule ^conferences/? conferences.php [L]
-RewriteRule ^workshops/? workshops.php [L]
-RewriteRule ^fdp-and-ftp/? fdp-and-ftp.php [L]
+# Media
+RewriteRule ^videos/? videos.php [L]
+RewriteRule ^photo-gallery/(.*)/? gallery-category.php?gcid=$1 [L]
+RewriteRule ^photo-gallery/? gallery-category.php [L]
+RewriteRule ^gallery-detail/(.*)/? gallery.php?gcid=$1 [L]
 
 
 # RewriteEngine On

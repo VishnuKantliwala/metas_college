@@ -166,7 +166,7 @@ else{
                             <div class="card-box">
                                 <h4 class="mt-0 header-title">Video Form</h4>
                                 <form class="form-horizontal" method="post" action="video_upload.php" id="myform" name="myform" enctype="multipart/form-data">
-                                    <div class="form-group">
+                                    <div class="form-group" style="display:none">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Category List</label>
                                         <div class="col-sm-12">
                                             <div class="panel-body">
@@ -198,7 +198,7 @@ else{
                                         </div>
                                     </div>
                                     
-                                    <div class="form-group">
+                                    <div class="form-group" style="display:none">
                                         <label for="inputEmail3" class="col-sm-2 control-label">Overview</label>
                                         <div class="col-sm-10">
                                             <textarea cols="80" class="ckeditor" id="description" name="description" rows="10"></textarea>

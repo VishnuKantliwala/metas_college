@@ -76,6 +76,26 @@ if(isset($ifid))
         $row1 = $cn->fetchAssoc($sql);
     }
 }
+if(isset($nid))
+{
+    $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_blog` where slug='".$nid."'" );
+//	echo $cn->numRows($sql2);
+    if ($cn->numRows($sql) > 0) 
+    {
+        $row1 = $cn->fetchAssoc($sql);
+    }
+}
+?>
+<?
+if(isset($gcid))
+{
+    $sql = $cn->selectdb("SELECT  `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_gallery_category` where slug='".$gcid."'" );
+//	echo $cn->numRows($sql2);
+    if ($cn->numRows($sql) > 0) 
+    {
+        $row1 = $cn->fetchAssoc($sql);
+    }
+}
 ?>
 
     <title>| Metas Adventist college ||
@@ -242,14 +262,21 @@ if($page_id==1)
               <img src="logo/big_img/<?echo $image_name?>" alt="Metas Adventist college">
             </a>
             <ul class="menuzord-menu">
-              <li><a href="#">About Us</a>
+              <li><a href="javascript:void(0)">About Us</a>
                 <ul class="dropdown">    
                   <li><a href="institute-details">Institute Details</a></li> 
                   <li><a href="directors-message">Directors Message</a>   </li>      
                   <li><a href="education-policy">Education Policy</a>  </li>               
-                  <li><a href="affiliations-and-accreditation">Affiliations & Accreditation</a>  </li>               
-                  <!-- <li><a href="#">Governing body</a>  </li>  
-                  <li><a href="#">Stautory committees</a>
+                  <li><a href="affiliations-and-accreditation">Affiliations & Accreditation</a>  </li>      
+                  <li><a href="javascript:void(0)">IQAC-NAAC</a>
+                    <ul class="dropdown">
+                      <li><a href="iqac-members">IQAC Members</a></li>  
+                      <li><a href="iqac-reports">Reports</a></li>  
+                                   
+                    </ul>
+                  </li>          
+                  <!-- <li><a href="javascript:void(0)">Governing body</a>  </li>  
+                  <li><a href="javascript:void(0)">Stautory committees</a>
                     <ul class="dropdown">
                       <li><a href="stautory-committees.php">Academic Council</a></li>
                       <li><a href="stautory-committees.php">Students Grievnace Redressal cell </a></li>
@@ -282,10 +309,10 @@ if($page_id==1)
               
 
 
-              <!-- <li><a href="#">Faculties</a>
+              <!-- <li><a href="javascript:void(0)">Faculties</a>
                 <ul class="dropdown">  
                   <li><a href="teaching-staff.php"> Teaching </a></li>                                
-                  <li><a href="#">Nonteaching</a>
+                  <li><a href="javascript:void(0)">Nonteaching</a>
                     <ul class="dropdown">
                       <li><a href="non-teaching-staff.php">Registrar</a></li>  
                       <li><a href="non-teaching-staff.php">Accounts</a></li>  
@@ -296,7 +323,7 @@ if($page_id==1)
                 </ul>
               </li> -->
 
-              <li><a href="#">Addmission</a>
+              <li><a href="javascript:void(0)">Addmission</a>
                 <ul class="dropdown">                                                
                   <li><a href="application-for-ug-pg-phd/1/">Application for UG / PG / PHD</a></li>
                   <li><a href="cancellation-policy">Cancellation Policy</a></li>
@@ -305,7 +332,7 @@ if($page_id==1)
                 </ul>
               </li>
 
-              <li><a href="#">Infrastructure</a>
+              <li><a href="javascript:void(0)">Infrastructure</a>
                 <ul class="dropdown">
                   <?php
                     $sql="SELECT page_id,page_name,slug FROM tbl_page where page_parent_id=19";
@@ -316,7 +343,7 @@ if($page_id==1)
                         $result1=$cn->selectdb($sql);
                         if($cn->numRows($result1)>0){
                   ?>
-                        <li><a href="#"><?php echo $row['page_name'];?></a>
+                        <li><a href="javascript:void(0)"><?php echo $row['page_name'];?></a>
                           <ul class="dropdown">
                         <?php
                             while($row11=$cn->fetchAssoc($result1)){
@@ -340,7 +367,7 @@ if($page_id==1)
                 </ul>
               </li>
 
-              <li><a href="#">R & D</a>
+              <li><a href="javascript:void(0)">R & D</a>
                 <ul class="dropdown">  
                   <li><a href="research-and-development-cell"> R & D Cell </a></li>                   
                   <li><a href="research-and-development"> R & D </a></li>                   
@@ -349,7 +376,7 @@ if($page_id==1)
               </li>
 
 
-              <li><a href="#">Student Corner</a>
+              <li><a href="javascript:void(0)">Student Corner</a>
                 <ul class="dropdown">  
                   <li><a href="students-corner"> About Us </a></li>
                   <li><a href="students-research"> R & D </a></li>
@@ -357,53 +384,50 @@ if($page_id==1)
                   <li><a href="code-of-conduct"> Code of Conduct  </a></li> 
                   <li><a href="examination"> Examination </a></li> 
                   <li><a href="https://scholarships.gov.in/" target="_BLANK"> Scholarship </a></li>                  
-                  <li><a href="#">Placements</a>
+                  <li><a href="javascript:void(0)">Placements</a>
                     <ul class="dropdown">
                       <li><a href="students-wise-placement-information">Student wise Placement Information</a></li>  
                       <li><a href="recruiters">Recruiters</a></li>  
                       <li><a href="memorandum-of-understanding">MOU's</a></li>                                                             
                     </ul>
                   </li> 
-                  <!-- <li><a href="#"> NAAD </a></li>  -->
+                  <!-- <li><a href="javascript:void(0)"> NAAD </a></li>  -->
                   <li><a href="javascript:void(0)">Alumni Cell</a>
                     <ul class="dropdown">
                       <li><a href="alumni-list">Members</a></li>                                                                 
                       <li><a href="alumni-registration">Registration</a></li>                                                                 
                     </ul>
                   </li>  
-                  <!-- <li><a href="#"> Feedback and Testimonials </a></li>                                               -->
+                  <li><a href="javascript:void(0)">Activities</a>
+                    <ul class="dropdown">
+                      <?
+                      $cn->getMenu(0,"","activities/","activities/",false, 'tbl_eventcategory', 'tbl_event', 'event_title');
+                      ?>
+                    </ul>
+                  </li>
+                  <!-- <li><a href="javascript:void(0)"> Feedback and Testimonials </a></li>                                               -->
                 </ul>
               </li>
               <li></li>
-              <!-- <li><a href="#">Affiliations & Accreditation</a>
+              <!-- <li><a href="javascript:void(0)">Affiliations & Accreditation</a>
                 <ul class="dropdown">  
-                  <li><a href="#"> 	AICTE </a></li>  
-                  <li><a href="#"> AAA  </a></li> 
-                  <li><a href="#"> 	INC </a></li> 
-                  <li><a href="#"> 		GNC </a></li>                  
-                  <li><a href="#">AISHE</a>
-                  <li><a href="#">NAAC</a>
+                  <li><a href="javascript:void(0)"> 	AICTE </a></li>  
+                  <li><a href="javascript:void(0)"> AAA  </a></li> 
+                  <li><a href="javascript:void(0)"> 	INC </a></li> 
+                  <li><a href="javascript:void(0)"> 		GNC </a></li>                  
+                  <li><a href="javascript:void(0)">AISHE</a>
+                  <li><a href="javascript:void(0)">NAAC</a>
                     <ul class="dropdown">
-                      <li><a href="#">AQAR</a></li>  
-                      <li><a href="#">IQAC</a></li>                                                             
+                      <li><a href="javascript:void(0)">AQAR</a></li>  
+                      <li><a href="javascript:void(0)">IQAC</a></li>                                                             
                     </ul>
                   </li>                                                
                 </ul>
               </li> -->
-           
-              <li><a href="#">Acivities</a>
-                <ul class="dropdown">  
-                  <?
-                  $cn->getMenu(0,"","activities/","activities/",false, 'tbl_eventcategory', 'tbl_event', 'event_title');
-                  ?>
-                  <!-- <li><a href="#"> 	Management Club </a></li>  
-                  <li><a href="#"> Vivacity club  </a></li> 
-                  <li><a href="#"> Eureka Club </a></li> 
-                  <li><a href="#"> Spectrum Club </a></li>  
-                  <li><a href="#"> 	Warrior Club </a></li>  
-                  <li><a href="#"> Brainwaves Club  </a></li> 
-                  <li><a href="#"> Mindskraft Club </a></li> 
-                  <li><a href="#"> Ascent Club </a></li>                                                 -->
+              <li><a href="javascript:void(0)">Media</a>
+                <ul class="dropdown">                                                
+                  <li><a href="photo-gallery">Photo gallery</a></li>
+                  <li><a href="videos">Videos</a></li>
                 </ul>
               </li>
                                 

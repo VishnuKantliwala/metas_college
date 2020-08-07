@@ -313,6 +313,17 @@ while($rowC=mysqli_fetch_assoc($sqlC))
                                         </div>
                                     </div>
                                     <!-- multi images -->
+
+                                    <div class="form-group">
+                                        <label for="inputEmail3" class="col-sm-12 control-label">PDF File</label>
+                                        <div class="col-sm-12">
+                                            <input type="file" id="event_file" name="event_file" class="dropify" data-default-file="<? if($row['pdf_file']!=''){echo "../event_pdf/".$row['pdf_file'];}?>" />
+                                            <? if($row['pdf_file']!=''){?>
+                                                <a href="event_upload.php?id=<?php echo $row[0]; ?>&PDF=Del" class="btn btn-lighten-danger" onClick="return confirm('Are you sure want to delete?');">Delete</a>
+                                            <? } ?>
+                                            <input type="hidden" id="frontimgpdf2" name="frontimgpdf2" value="<?php echo $row['pdf_file']?>"  />
+                                        </div>
+                                    </div>
                                     
                                     <div class="form-group">
                                         <label for="inputEmail3" class="col-sm-12 control-label"><span style="color:#F00; font-weight:bold;">*</span> Meta Tag Title</label>

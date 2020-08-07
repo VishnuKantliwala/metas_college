@@ -378,7 +378,7 @@ echo "<script>alert('No file selected..');</script>";
                                                 <tr>
                                                     <th><input type="checkbox" id="checkall" class="checkall" name="sample"/> Select all</th>
                                                     <th>Name</th>
-                                                    <th>Category</th>
+                                                    <!-- <th>Category</th> -->
                                                     <th>Copy</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
@@ -388,7 +388,7 @@ echo "<script>alert('No file selected..');</script>";
                                                 <tr>
                                                     <th><input type="checkbox" id="checkall" class="checkall" name="sample"/> Select all</th>
                                                     <th>Name</th>
-                                                    <th>Category</th>
+                                                    <!-- <th>Category</th> -->
                                                     <th>Copy</th>
                                                     <th>Edit</th>
                                                     <th>Delete</th>
@@ -411,6 +411,9 @@ echo "<script>alert('No file selected..');</script>";
                                                         <tr>
                                                             <td><input type="checkbox" name="chkbox[]" id="chkbox" class="chkbox"  value="<?echo $video_id?>"/></td>
                                                             <td><?php echo $video_name ?></td>
+                                                            <?
+                                                            /*
+                                                            ?>
                                                             <td>
                                                                 <div class="row">
                                                                     <div class="col-12">
@@ -420,6 +423,9 @@ echo "<script>alert('No file selected..');</script>";
                                                                     </div>
                                                                 </div>
                                                             </td>
+                                                            <?
+                                                            */
+                                                            ?>
                                                             <td><a href='video_copy.php?id=<?php echo $video_id ?>&page=<?php  echo isset($_GET['page']);?>'><i class="fa fa-copy"></i></a></td>
                                                             <td><a href='video_up.php?video_id=<?php echo $video_id ?>&page=<? echo isset($_GET['page']);?>'><i class="fa fa-edit"></i></a></td>
                                                             <td><a href='delete_video_rec.php?tablename=tbl_video&primarykey=video_id&id=<?php echo $video_id ?>&page=<? echo isset($_GET['page']);?>' onClick="return confirm('Are you sure want to delete?');"><i class="fa fa-trash"></i></a></td>

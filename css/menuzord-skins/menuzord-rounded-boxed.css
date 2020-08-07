@@ -8,7 +8,7 @@ Rounded Boxed Skin
 }
 .menuzord-menu > li > a{
 	padding: 8px 9px;
-	border-radius: 30px;
+	/* border-radius: 30px; */
 }
 
 /* Active/hover state (Menu items) */

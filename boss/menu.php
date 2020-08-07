@@ -72,6 +72,18 @@
                             </li>
 
                             <li>
+                                <a href="projectCatView.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> IQAC </span>
+                                    <span class="menu-arrow"></span>
+                                </a>
+                                <ul class="nav-second-level" aria-expanded="false">
+                                    <li><a href="iqac_membersView.php"> Members </a></li>
+                                    <li><a href="iqac_reportView.php"> Reports </a></li>
+                                </ul>
+                            </li>
+
+                            <li>
                                 <a href="affiliationsView.php">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Affiliations </span>
@@ -168,17 +180,18 @@
                                     <li><a href="downloadView.php"> Download </a></li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="video2.php">
+                                    <i class="mdi mdi-view-dashboard"></i>
+                                    <span> Home Video </span>
+                                </a>
+                            </li>
 
                             <li>
-                                <a href="videoCatView.php">
+                                <a href="videoView.php">
                                     <i class="mdi mdi-view-dashboard"></i>
                                     <span> Videos </span>
-                                    <span class="menu-arrow"></span>
                                 </a>
-                                <ul class="nav-second-level" aria-expanded="false">
-                                    <li><a href="videoCatView.php"> Category </a></li>
-                                    <li><a href="videoView.php"> Videos </a></li>
-                                </ul>
                             </li>
 
                             <li>

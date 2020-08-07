@@ -130,6 +130,9 @@ $sql = $cn->selectdb("SELECT * FROM tbl_event order by event_id desc");
                                                 @unlink('../eventF/big_img/'.$rowF);
                                                 @unlink('../eventF/'.$rowF);
                                             }
+
+                                            // pdf
+		                                    @unlink('../event_pdf/'.$row['pdf_file']);
                                             
                                             
                                             

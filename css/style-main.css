@@ -998,7 +998,7 @@ section > .container-fluid {
 }
 /* -------- Menuzord ---------- */
 .menuzord-menu > li {
-  padding: 24px 0;
+  padding: 24px 5px;
 }
 .menuzord-menu ul.dropdown {
   top: 83px;
