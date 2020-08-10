@@ -41,7 +41,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_qualification" data-toggle="tab">Qualification</a></li>
+        <li class="<?echo $class?>"><a href="#team_qualification<?echo $team_id?>" data-toggle="tab">Qualification</a></li>
         <?
                             }
                             ?>
@@ -57,7 +57,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_articles" data-toggle="tab">Articles in Journals</a></li>
+        <li class="<?echo $class?>"><a href="#team_articles<?echo $team_id?>" data-toggle="tab">Articles in Journals</a></li>
         <?
                             }
                             ?>
@@ -73,7 +73,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_publications" data-toggle="tab">Publications</a></li>
+        <li class="<?echo $class?>"><a href="#team_publications<?echo $team_id?>" data-toggle="tab">Publications</a></li>
         <?
                             }
                             ?>
@@ -89,7 +89,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_books" data-toggle="tab">Books</a></li>
+        <li class="<?echo $class?>"><a href="#team_books<?echo $team_id?>" data-toggle="tab">Books</a></li>
         <?
                             }
                             ?>
@@ -105,7 +105,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_conferences" data-toggle="tab">Conferences</a></li>
+        <li class="<?echo $class?>"><a href="#team_conferences<?echo $team_id?>" data-toggle="tab">Conferences</a></li>
         <?
                             }
                             ?>
@@ -123,7 +123,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_presentations" data-toggle="tab">Paper presentations
+        <li class="<?echo $class?>"><a href="#team_presentations<?echo $team_id?>" data-toggle="tab">Paper presentations
             </a></li>
         <?
                             }
@@ -141,7 +141,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_invites" data-toggle="tab">Invited Talks</a></li>
+        <li class="<?echo $class?>"><a href="#team_invites<?echo $team_id?>" data-toggle="tab">Invited Talks</a></li>
         <?
                             }
                             ?>
@@ -157,7 +157,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_thesis" data-toggle="tab">Own MPhil/PhD thesis</a></li>
+        <li class="<?echo $class?>"><a href="#team_thesis<?echo $team_id?>" data-toggle="tab">Own MPhil/PhD thesis</a></li>
         <?
                             }
                             ?>
@@ -174,7 +174,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#team_workshops" data-toggle="tab">Workshop/FDP/Training programme
+        <li class="<?echo $class?>"><a href="#team_workshops<?echo $team_id?>" data-toggle="tab">Workshop/FDP/Training programme
                 Attended</a></li>
         <?
                             }
@@ -200,7 +200,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_qualification">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_qualification<?echo $team_id?>">
             <?echo $team_qualification ?>
         </div>
         <?
@@ -218,7 +218,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_articles">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_articles<?echo $team_id?>">
             <?echo $team_articles ?>
         </div>
         <?
@@ -236,7 +236,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_publications">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_publications<?echo $team_id?>">
             <?echo $team_publications ?>
         </div>
         <?
@@ -254,7 +254,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_books">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_books<?echo $team_id?>">
             <?echo $team_books ?>
         </div>
         <?
@@ -272,7 +272,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_conferences">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_conferences<?echo $team_id?>">
             <?echo $team_conferences ?>
         </div>
         <?
@@ -290,7 +290,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_presentations">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_presentations<?echo $team_id?>">
             <?echo $team_presentations ?>
         </div>
         <?
@@ -307,7 +307,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_invites">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_invites<?echo $team_id?>">
             <?echo $team_invites ?>
         </div>
         <?
@@ -324,7 +324,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_thesis">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_thesis<?echo $team_id?>">
             <?echo $team_thesis ?>
         </div>
         <?
@@ -341,7 +341,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_workshops">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="team_workshops<?echo $team_id?>">
             <?echo $team_workshops ?>
         </div>
         <?

@@ -335,7 +335,7 @@ if($page_id==1)
               <li><a href="javascript:void(0)">Infrastructure</a>
                 <ul class="dropdown">
                   <?php
-                    $sql="SELECT page_id,page_name,slug FROM tbl_page where page_parent_id=19";
+                    $sql="SELECT page_id,page_name,slug FROM tbl_page where page_parent_id=19 ORDER BY page_name";
                     $result=$cn->selectdb($sql);
                     if($cn->numRows($result)>0){
                       while($row=$cn->fetchAssoc($result)){

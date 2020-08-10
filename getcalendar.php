@@ -34,7 +34,7 @@ if ($cn->numRows($sql1) > 0)
             <td>DAY</td>
         </tr>
         <?
-        $sqlEntries = $cn->selectdb("SELECT * from tbl_calendar where CONCAT(',',cat_id) like '%".$cat_id."%' ORDER BY from_date");
+        $sqlEntries = $cn->selectdb("SELECT `calendar_id`, `calendar_name`, `description`, `recordListingID`, `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords`, `slug`, `from_date`, `to_date` from tbl_calendar where CONCAT(',',cat_id) like '%".$cat_id."%' ORDER BY `calendar_id`,from_date");
         if( $cn->numRows($sqlEntries) > 0 )
         {
             while($rowEntries = $cn->fetchAssoc($sqlEntries))
@@ -105,6 +105,23 @@ if ($cn->numRows($sql1) > 0)
         ?>
         
         </table>
+        <h3>Total no. of Working days:</h3>
+        <ul>
+        <?
+        $sqlMonths = $cn->selectdb("SELECT month, month_days from tbl_calendar_month WHERE cat_id = ".trim($cat_id,','));
+        if( $cn->numRows($sqlMonths) > 0 )
+        {
+            while($rowMonths = $cn->fetchAssoc($sqlMonths))
+            {
+                extract($rowMonths);
+        ?>
+            <li><?echo $month?> - <?echo $month_days?></li>
+
+        <?
+            }
+        }
+        ?>
+        </ul>
     </div>
 
     

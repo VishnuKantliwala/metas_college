@@ -74,7 +74,9 @@
         <div class="title-separator mb-60">
   <span class="text-uppercase font-26"> <?php echo $rowIn['page_name'];?></span>
 </div>
+<div class="my_desc">
 <?php echo $rowIn['page_desc'];?>
+</div>
 <div class="separator"></div>
          
         </div>
