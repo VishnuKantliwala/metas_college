@@ -2,10 +2,11 @@
 $page_id = 65;
 if(!isset($_GET['gcid']))
 {
-    $gcid = 0;
+    $gcid = "test";
 }
 else
 {
+    // echo "in";
     $gcid = urldecode($_GET['gcid']);
 }
 include_once("header.php");
@@ -20,7 +21,7 @@ if( $cn->numRows($sqlGalleryCat) > 0 )
 {
     $rowGalleryCat = $cn->fetchAssoc($sqlGalleryCat);
     extract($rowGalleryCat);
-    // echo $cat_id;
+    echo $cat_id;
 }
 else
 {
@@ -42,6 +43,7 @@ else
                     <div class="col-md-12">
                         <h2 class="title text-white text-center">
                             <?echo $cat_name ?>
+                            
                         </h2>
                         <ol class="breadcrumb text-left text-black mt-10">
                             <li><a href="./">Home</a></li>

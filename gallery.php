@@ -2,7 +2,7 @@
 $page_id = 65;
 if(!isset($_GET['gcid']))
 {
-    $gcid = 0;
+    $gcid = "test";
 }
 else
 {

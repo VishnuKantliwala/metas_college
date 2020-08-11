@@ -41,7 +41,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#student_qualification" data-toggle="tab">Qualification</a></li>
+        <li class="<?echo $class?>"><a href="#student_qualification<?echo $student_id?>" data-toggle="tab">Qualification</a></li>
         <?
                             }
                             ?>
@@ -57,7 +57,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#student_articles" data-toggle="tab">Articles in Journals</a></li>
+        <li class="<?echo $class?>"><a href="#student_articles<?echo $student_id?>" data-toggle="tab">Articles in Journals</a></li>
         <?
                             }
                             ?>
@@ -76,7 +76,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#student_presentations" data-toggle="tab">Paper presentations
+        <li class="<?echo $class?>"><a href="#student_presentations<?echo $student_id?>" data-toggle="tab">Paper presentations
             </a></li>
         <?
                             }
@@ -94,7 +94,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#student_invites" data-toggle="tab">Invited Talks</a></li>
+        <li class="<?echo $class?>"><a href="#student_invites<?echo $student_id?>" data-toggle="tab">Invited Talks</a></li>
         <?
                             }
                             ?>
@@ -110,7 +110,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#student_thesis" data-toggle="tab">Own MPhil/PhD thesis</a></li>
+        <li class="<?echo $class?>"><a href="#student_thesis<?echo $student_id?>" data-toggle="tab">Own MPhil/PhD thesis</a></li>
         <?
                             }
                             ?>
@@ -127,7 +127,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <li class="<?echo $class?>"><a href="#student_workshops" data-toggle="tab">Workshop/FDP/Training programme
+        <li class="<?echo $class?>"><a href="#student_workshops<?echo $student_id?>" data-toggle="tab">Workshop/FDP/Training programme
                 Attended</a></li>
         <?
                             }
@@ -153,7 +153,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_qualification">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_qualification<?echo $student_id?>">
             <?echo $student_qualification ?>
         </div>
         <?
@@ -171,7 +171,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_articles">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_articles<?echo $student_id?>">
             <?echo $student_articles ?>
         </div>
         <?
@@ -190,7 +190,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_presentations">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_presentations<?echo $student_id?>">
             <?echo $student_presentations ?>
         </div>
         <?
@@ -207,7 +207,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_invites">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_invites<?echo $student_id?>">
             <?echo $student_invites ?>
         </div>
         <?
@@ -224,7 +224,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_thesis">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_thesis<?echo $student_id?>">
             <?echo $student_thesis ?>
         </div>
         <?
@@ -241,7 +241,7 @@ if ($cn->numRows($sql1) > 0)
                                 else
                                     $class = "";
                             ?>
-        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_workshops">
+        <div class="tab-pane fade <?echo $class?> my_desc my_desc__table" id="student_workshops<?echo $student_id?>">
             <?echo $student_workshops ?>
         </div>
         <?
