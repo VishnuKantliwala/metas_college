@@ -4,98 +4,112 @@
       <div class="row">
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
-            <img class="mt-10 mb-15" alt="" src="images/metas/logoMetas-light.png">
-            <p class="font-16 mb-10">The operations of Surat is managed by Medical Educational Trust Association Surat of Seventh-day Adventist.</p>
-            <a class="font-14" href="#"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
-            <ul class="styled-icons icon-dark mt-20">
-              <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".1s" data-wow-offset="10"><a href="#" data-bg-color="#3B5998"><i class="fa fa-facebook"></i></a></li>
-              <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".2s" data-wow-offset="10"><a href="#" data-bg-color="#02B0E8"><i class="fa fa-twitter"></i></a></li>
-              <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".3s" data-wow-offset="10"><a href="#" data-bg-color="#05A7E3"><i class="fa fa-skype"></i></a></li>
-              <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".4s" data-wow-offset="10"><a href="#" data-bg-color="#A11312"><i class="fa fa-google-plus"></i></a></li>
-              <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".5s" data-wow-offset="10"><a href="#" data-bg-color="#C22E2A"><i class="fa fa-youtube"></i></a></li>
-            </ul>
+            <?	
+              $sqlLogo = $cn->selectdb("SELECT `logo_id`, `image_name` FROM  `tbl_logo` where logo_id=2" );
+              if ($cn->numRows($sqlLogo) > 0) 
+              {
+                              $rowLogo = $cn->fetchAssoc($sqlLogo);
+                              extract($rowLogo);
+              }
+            ?>
+            <a href="Home/"><img class="mt-10 mb-15" src="logo/big_img/<?echo $image_name?>" alt="Metas college" /></a>
+            <?
+            $sqlAbt = $cn->selectdb("SELECT page_desc from tbl_page where page_id = 67");
+            if( $cn->numRows($sqlAbt) > 0 )
+            {
+              while($rowAbt = $cn->fetchAssoc($sqlAbt))
+              {
+                extract($rowAbt);
+            ?>
+            <p class="font-16 mb-10"><?echo $page_desc ?></p>
+            <a class="font-14" href="institute-details"><i class="fa fa-angle-double-right text-theme-colored"></i> Read more</a>
+            <?
+              }
+            }
+            
+            ?>
+            
           </div>
         </div>
+        <?php
+            $sql="SELECT blog_name,slug,bdate,blog_image,description FROM tbl_blog ORDER BY recordListingID LIMIT 3";
+            $result = $cn->selectdb($sql);
+            if($cn->numRows($result)>0)
+            {
+              
+        ?>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
             <h5 class="widget-title line-bottom">Latest News</h5>
             <div class="latest-posts">
+              <?
+              while($row=$cn->fetchAssoc($result))
+              {
+                $href = "news/".urlencode($row['slug']);
+
+              ?>
               <article class="post media-post clearfix pb-0 mb-10">
-                <a href="#" class="post-thumb"><img alt="" style="height:55px;width:80px;" src="images/project/p1.jpg"></a>
+                <a href="#" class="post-thumb"><img alt="<?php echo $row['blog_name'];?>" style="height:55px;width:90px;overflow:hidden;object-fit:cover" src="blog/big_img/<?php echo $row['blog_image'];?>"></a>
                 <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="#">Exam Grade Booster</a></h5>
-                  <p class="post-date mb-0 font-12">May 25, 2020</p>
+                
+                  <h5 class="post-title mt-0 mb-5"><a href="<?echo $href?>"><?php echo substr($row['blog_name'],0,30);?></a></h5>
+                  <p class="post-date mb-0 font-12"><?php echo date('d F Y', strtotime($row['bdate']));?></p>
                 </div>
               </article>
-              <article class="post media-post clearfix pb-0 mb-10">
-                <a href="#" class="post-thumb"><img alt="" style="height:55px;width:80px;" src="images/project/p4.jpg"></a>
-                <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="#">Study To Success</a></h5>
-                  <p class="post-date mb-0 font-12">May 25, 2020</p>
-                </div>
-              </article>
-              <article class="post media-post clearfix pb-0 mb-10">
-                <a href="#" class="post-thumb"><img alt="" style="height:55px;width:80px;" src="images/project/p6.jpg"></a>
-                <div class="post-right">
-                  <h5 class="post-title mt-0 mb-5"><a href="#">The College Info Geek Podcast</a></h5>
-                  <p class="post-date mb-0 font-12">May 25, 2020</p>
-                </div>
-              </article>
+              <?
+              }
+              ?>
              
             </div>
           </div>
         </div>
+        <?
+            }
+        ?>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
             <h5 class="widget-title line-bottom">Useful Links</h5>
             <ul class="list angle-double-right list-border">
-              <li><a href="#">Addmision</a></li>
-              <li><a href="#">Programs</a></li>
-              <li><a href="#">Career</a></li>
-              <li><a href="#">Student Corner</a></li>
-              <li><a href="#">Media Center</a></li>
+              <li><a href="institute-details">Institute details</a></li>
+              <li><a href="application-for-ug-pg-phd/1/">Application for UG/PG/PHD</a></li>
+              <li><a href="research-and-development">Research and Development</a></li>
+              <li><a href="students-corner">Student Corner</a></li>
+              <li><a href="photo-gallery">Media Center</a></li>
             </ul>
           </div>
         </div>
+        <?
+        $sqlContact = $cn->selectdb("SELECT `con_id`, `maptag`, `contact_desc`, `email`, `contact_no`, `opening_hours`, `meta_tag_title`, `meta_tag_description`, `meta_tag_keywords` FROM  `tbl_contact` where con_id=1" );
+        //	echo $cn->numRows($sql2);
+        if ($cn->numRows($sqlContact) > 0) 
+        {
+          $rowContact = $cn->fetchAssoc($sqlContact);
+         extract($rowContact);
+        }
+        ?>
         <div class="col-sm-6 col-md-3">
           <div class="widget dark">
             <h5 class="widget-title line-bottom">Quick Contact</h5>
             <ul class="list-border">
-              <li><a href="#">+91 7825256259</a></li>
-              <li><a href="#">info@metascollege.com</a></li>
-              <li><a href="#" class="lineheight-20">P.O. Box No. 24 Athwalines, Surat -395 001. Gujarat</a></li>
+              <li><a href="tel:<?echo $contact_no ?>"><?echo $contact_no ?></a></li>
+              <li><a href="mailto:<?echo $email ?>"><?echo $email ?></a></li>
+              <li><a href="javascript:void(0)" class="lineheight-20"><?echo strip_tags($contact_desc) ?></a></li>
             </ul>
-            <p class="font-16 text-white mb-5 mt-15">Subscribe to our newsletter</p>
-            <form id="footer-mailchimp-subscription-form" class="newsletter-form mt-10">
-              <label class="display-block" for="mce-EMAIL"></label>
-              <div class="input-group">
-                <input type="email" value="" name="EMAIL" placeholder="Your Email"  class="form-control" data-height="37px" id="mce-EMAIL">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-colored btn-theme-colored m-0"><i class="fa fa-paper-plane-o text-white"></i></button>
-                </span>
-              </div>
-            </form>
-            
-            <!-- Mailchimp Subscription Form Validation-->
-            <script type="text/javascript">
-              $('#footer-mailchimp-subscription-form').ajaxChimp({
-                  callback: mailChimpCallBack,
-                  url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
-              });
-
-              function mailChimpCallBack(resp) {
-                  // Hide any previous response text
-                  var $mailchimpform = $('#footer-mailchimp-subscription-form'),
-                      $response = '';
-                  $mailchimpform.children(".alert").remove();
-                  if (resp.result === 'success') {
-                      $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                  } else if (resp.result === 'error') {
-                      $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
+            <ul class="styled-icons icon-dark mt-20">
+              <?
+                  $sql = $cn->selectdb("SELECT * from tbl_socialmedia order by recordListingID");
+                  while($row = $cn->fetchAssoc($sql))
+                  {
+                      extract($row);
+              ?>
+              <li class="wow fadeInLeft" data-wow-duration="1.5s" data-wow-delay=".1s" data-wow-offset="10"><a href="<?echo $link_url?>" data-bg-color="#3B5998"><i class="fa <?echo $description?>"></i></a></li>
+              <?
                   }
-                  $mailchimpform.prepend($response);
-              }
-            </script>
+              ?>
+              
+              
+            </ul>
+            
           </div>
         </div>
       </div>
@@ -110,16 +124,16 @@
             <div class="widget no-border m-0">
               <ul class="list-inline sm-text-center mt-5 font-12">
                 <li>
-                  <a href="#">FAQ</a>
+                  <a href="faqs">FAQ</a>
                 </li>
                 <li>|</li>
-                <li>
+                <!-- <li>
                   <a href="#">Help Desk</a>
                 </li>
                 <li>|</li>
                 <li>
                   <a href="#">Support</a>
-                </li>
+                </li> -->
               </ul>
             </div>
           </div>

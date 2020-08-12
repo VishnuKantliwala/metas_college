@@ -515,6 +515,14 @@ include 'header.php'; ?>
     <?php
         }
     ?>
+    <?
+    $sqlHomeFacultyPage = $cn->selectdb('select page_name, page_desc from tbl_page where page_id = 69');
+    if( $cn->numRows($sqlHomeFacultyPage) > 0 )
+    {
+      $rowHomeFacultyPage = $cn->fetchAssoc($sqlHomeFacultyPage);
+      extract($rowHomeFacultyPage);
+    
+    ?>
     <!-- Section: Teachers -->
     <section id="teachers">
         <div class="container pt-70 pb-70">
@@ -522,92 +530,51 @@ include 'header.php'; ?>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
                         <h2 class="mt-0 line-height-1 text-center text-uppercase mb-10 text-black-333">Our <span
-                                class="text-theme-color-2"> Teachers</span></h2>
-                        <p>A college course is a class offered by a college or university.</p>
+                                class="text-theme-color-2"> <?echo $page_name ?></span></h2>
+                        <?echo $page_desc ?>
                     </div>
                 </div>
             </div>
             <div class="row mtli-row-clearfix">
                 <div class="col-md-12">
                     <div class="owl-carousel-4col">
-                        <div class="item">
-                            <div class="team-members border-bottom-theme-color-2px text-center maxwidth400">
-                                <div class="team-thumb">
-                                    <img class="img-fullwidth" alt="" src="images/metas/team/a1.jpeg">
-                                    <div class="team-overlay"></div>
+                        <?
+                            $sqlHomeFaculty = $cn->selectdb("SELECT * FROM tbl_team where cat_id!='' ORDER BY rand() " ) ;
+                            if( $cn->numRows($sqlHomeFaculty) > 0 )
+                            {
+                                while($rowHomeFaculty = $cn->fetchAssoc($sqlHomeFaculty))
+                                {
+                                    extract($rowHomeFaculty);
+                                    $href = "faculty/".urlencode($slug);
+                            ?>
+                           <div class="item">
+                                <div class="team-members border-bottom-theme-color-2px text-center maxwidth400">
+                                    <div class="team-thumb">
+                                        <img class="img-fullwidthfaculty_listing_img" alt="<?echo $team_title ?>" src="team/big_img/<?echo $image_name?>">
+                                        <div class="team-overlay"></div>
+                                    </div>
+                                    <div class="team-details bg-silver-light pt-10 pb-10">
+                                        <h4 class="text-uppercase font-weight-600 m-5"><a href="<?echo $href?>"><?echo $team_title ?></a></h4>
+                                        <h6 class="text-theme-colored font-15 font-weight-400 mt-0">
+                                        <?echo $team_position!="" ? $team_position : 'Professor' ?></h6>
+                                        
+                                    </div>
                                 </div>
-                                <div class="team-details bg-silver-light pt-10 pb-10">
-                                    <h4 class="text-uppercase font-weight-600 m-5"><a href="#">Rajesh Kumar</a></h4>
-                                    <h6 class="text-theme-colored font-15 font-weight-400 mt-0">Teacher</h6>
-                                    <ul class="styled-icons icon-theme-colored icon-dark icon-circled icon-sm">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="team-members border-bottom-theme-color-2px text-center maxwidth400">
-                                <div class="team-thumb">
-                                    <img class="img-fullwidth" alt="" src="images/metas/team/a2.jpeg">
-                                    <div class="team-overlay"></div>
-                                </div>
-                                <div class="team-details bg-silver-light pt-10 pb-10">
-                                    <h4 class="text-uppercase font-weight-600 m-5"><a href="#">Anil Mehta</a></h4>
-                                    <h6 class="text-theme-colored font-15 font-weight-400 mt-0">Commerce Teacher</h6>
-                                    <ul class="styled-icons icon-theme-colored icon-dark icon-circled icon-sm">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="team-members border-bottom-theme-color-2px text-center maxwidth400">
-                                <div class="team-thumb">
-                                    <img class="img-fullwidth" alt="" src="images/metas/team/a3.jpeg">
-                                    <div class="team-overlay"></div>
-                                </div>
-                                <div class="team-details bg-silver-light pt-10 pb-10">
-                                    <h4 class="text-uppercase font-weight-600 m-5"><a href="#">Kapil Rathi</a></h4>
-                                    <h6 class="text-theme-colored font-15 font-weight-400 mt-0">Nursing Teacher</h6>
-                                    <ul class="styled-icons icon-theme-colored icon-dark icon-circled icon-sm">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="team-members border-bottom-theme-color-2px text-center maxwidth400">
-                                <div class="team-thumb">
-                                    <img class="img-fullwidth" alt="" src="images/metas/team/a4.jpeg">
-                                    <div class="team-overlay"></div>
-                                </div>
-                                <div class="team-details bg-silver-light pt-10 pb-10">
-                                    <h4 class="text-uppercase font-weight-600 m-5"><a
-                                            href="page-teachers-details.html">Rachna Shukla</a></h4>
-                                    <h6 class="text-theme-colored font-15 font-weight-400 mt-0">Management Teacher</h6>
-                                    <ul class="styled-icons icon-theme-colored icon-dark icon-circled icon-sm">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-skype"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                            </div> 
+                            <?
+                                }
+                            }
+                        ?>
+                        
+                        
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    <?
+    }
+    ?>
 
     <?
     $sqlHomeEventsPage = $cn->selectdb('select page_name, page_desc, image from tbl_page where page_id = 59');
@@ -689,15 +656,22 @@ include 'header.php'; ?>
     <?
     }
     ?>
-
+    <?
+    $sqlHomeGallery = $cn->selectdb('select page_name, page_desc, image from tbl_page where page_id = 68');
+    if( $cn->numRows($sqlHomeGallery) > 0 )
+    {
+      $rowHomeGallery = $cn->fetchAssoc($sqlHomeGallery);
+      extract($rowHomeGallery);
+    
+    ?>
     <!-- Gallery Grid 3 -->
     <section id="gallery">
         <div class="container pt-70 pb-70">
             <div class="section-title text-center">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h2 class="mt-0 line-height-1 text-center mb-10 text-black-333 text-uppercase">Our <span
-                                class="text-theme-color-2"> Gllery</span></h2>
+                        <h2 class="mt-0 line-height-1 text-center mb-10 text-black-333 text-uppercase"><?echo $page_name ?> <span
+                                class="text-theme-color-2"> </span></h2>
                         <!-- <p class="mb-0 pb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem autem<br> voluptatem obcaecati!</p> -->
                     </div>
                 </div>
@@ -715,11 +689,31 @@ include 'header.php'; ?>
                         <!-- End Portfolio Filter -->
 
                         <!-- Portfolio Gallery Grid -->
+                        
                         <div class="gallery-isotope grid-4 gutter-small clearfix" data-lightbox="gallery">
                             <!-- Portfolio Item Start -->
+                            <?
+                            $sqlHomeGalleryCat = $cn->selectdb("SELECT cat_name, slug, cat_image, cat_id from tbl_gallery_category WHERE cat_parent_id = 0 order by recordListingID limit 4");
+                            if( $cn->numRows($sqlHomeGalleryCat) > 0 )
+                            {
+                                while($rowHomeGalleryCat = $cn->fetchAssoc($sqlHomeGalleryCat))
+                                {
+                                    extract($rowHomeGalleryCat);
+                                    $sqlHaveSubCat = $cn->selectdb('select cat_id from tbl_gallery_category where cat_parent_id ='.$cat_id);
+                                    
+                                    if( $cn->numRows($sqlHaveSubCat) > 0 )
+                                    {
+                                        $href = "photo-gallery/".urlencode($slug);    
+                                    }
+                                    else
+                                    {
+                                        $href = "gallery-detail/".urlencode($slug);
+                                    }
+                            ?>
+
                             <div class="gallery-item campus">
                                 <div class="thumb">
-                                    <img class="img-fullwidth" src="images/gallery/1.jpg" alt="img">
+                                    <img class="img-fullwidth gallery_cat_img" src="./gallerycategory/big_img/<?echo $cat_image?>" alt="<?echo $cat_name?>">
                                     <div class="overlay-shade"></div>
                                     <div class="text-holder">
                                         <!-- <div class="title text-center">Sample Title</div> -->
@@ -727,80 +721,24 @@ include 'header.php'; ?>
                                     <div class="icons-holder">
                                         <div class="icons-holder-inner">
                                             <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a href="images/gallery/1.jpg" data-lightbox-gallery="gallery"><i
-                                                        class="fa fa-picture-o"></i></a>
+                                                <a href="<?echo $href?>" ><i
+                                                        class="fa fa-link"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- Portfolio Item End -->
+                            
+                            <?
+                                }
+                            }
+
+                            ?>
+                            
 
 
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item campus">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="images/gallery/2.jpg" alt="img">
-                                    <div class="overlay-shade"></div>
-                                    <div class="text-holder">
-                                        <!-- <div class="title text-center">Sample Title</div> -->
-                                    </div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a href="images/gallery/2.jpg" data-lightbox-gallery="gallery"><i
-                                                        class="fa fa-picture-o"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-
-
-
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item campus">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="images/gallery/3.jpg" alt="img">
-                                    <div class="overlay-shade"></div>
-                                    <div class="text-holder">
-                                        <!-- <div class="title text-center">Sample Title</div> -->
-                                    </div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a href="images/gallery/3.jpg" data-lightbox-gallery="gallery"><i
-                                                        class="fa fa-picture-o"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
-
-
-
-
-                            <!-- Portfolio Item Start -->
-                            <div class="gallery-item campus">
-                                <div class="thumb">
-                                    <img class="img-fullwidth" src="images/gallery/4.jpg" alt="img">
-                                    <div class="overlay-shade"></div>
-                                    <div class="text-holder">
-                                        <!-- <div class="title text-center">Sample Title</div> -->
-                                    </div>
-                                    <div class="icons-holder">
-                                        <div class="icons-holder-inner">
-                                            <div class="styled-icons icon-sm icon-dark icon-circled icon-theme-colored">
-                                                <a href="images/gallery/4.jpg" data-lightbox-gallery="gallery"><i
-                                                        class="fa fa-picture-o"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Portfolio Item End -->
+                            
 
                         </div>
                         <!-- End Portfolio Gallery Grid -->
@@ -810,6 +748,9 @@ include 'header.php'; ?>
             </div>
         </div>
     </section>
+    <?
+    }
+    ?>
 
     
 <?php
@@ -844,6 +785,8 @@ include 'header.php'; ?>
                 <div class="owl-carousel-3col owl-nav-top mb-sm-0" data-dots="true">
                     <?php
                     while($row=$cn->fetchAssoc($result)){
+                        $href = "news/".urlencode($row['slug']);
+
                 ?>
                     <div class="item">
                         <article class="post clearfix maxwidth600 mb-sm-30 wow fadeInRight" data-wow-delay=".2s">
@@ -869,12 +812,12 @@ include 'header.php'; ?>
                             </div>
                             <div class="entry-content border-1px p-20">
                                 <h4 class="entry-title mt-0 pt-0"><a class=" list-title list-title--news"
-                                        href="blog-detail/<?php echo $row['slug'];?>"><?php echo $row['blog_name'];?></a>
+                                        href="<?echo $href?>"><?php echo $row['blog_name'];?></a>
                                 </h4>
                                 <p class="text-left mb-20 mt-5 font-13  list-desc list-desc--homenews">
                                     <?php echo substr(strip_tags($row['description']),0,200);?>...</p>
                                 <a class="btn btn-flat btn-dark btn-theme-colored btn-sm pull-left"
-                                    href="blog-detail/<?php echo $row['slug'];?>">Read more</a>
+                                    href="<?echo $href?>">Read more</a>
                                 <div class="clearfix"></div>
                             </div>
                         </article>

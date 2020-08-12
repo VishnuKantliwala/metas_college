@@ -26,7 +26,7 @@ if ($cn->numRows($sql1) > 0)
 <div class="col-md-3">
     <div class="hover-effect mb-30">
         <div class="thumb">
-            <img class="img-fullwidth faculty_listing_img" alt="" src="team/big_img/<?echo $image_name?>">
+            <img class="img-fullwidth faculty_listing_img" alt="<?echo $team_title ?>" src="team/big_img/<?echo $image_name?>">
             
         </div>
         <div class="details p-15 pt-10 pb-10">
